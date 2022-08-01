@@ -8,10 +8,10 @@ authors = ["Artem <artemilienkono@gmail.com>"]
 python = "^3.10"
 aiogram = "^2.21"
 peewee = "^3.15.1"
-peewee-migrate = "^1.4.12"
 environs = "^9.5.0"
 aioredis = "^2.0.1"
 loguru = "^0.6.0"
+peewee-migrate = "^1.4.12"
 
 [tool.poetry.dev-dependencies]
 

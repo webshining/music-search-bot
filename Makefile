@@ -1,5 +1,17 @@
+RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
 LOCATIONS_PATH := ./data/locales
+MIGRATIONS_PATH := ./data/migrations
+DATABASE_URL := $(shell python get_database_url.py)
 
+migrate_create:
+	pw_migrate create --auto --database ${DATABASE_URL} --directory ${MIGRATIONS_PATH} ${RUN_ARGS}
+	# pw_migrate create --auto --database $(python get_database_url.py) --directory ./data/migrations migrate
+migrate_migrate:
+	pw_migrate migrate --database ${DATABASE_URL} --directory ${MIGRATIONS_PATH}
+	# pw_migrate migrate --database $(python get_database_url.py) --directory ./data/migrations
+migrate_rollback:
+	pw_migrate rollback --database ${DATABASE_URL} --directory ${MIGRATIONS_PATH} --count 1
+	# pw_migrate rollback --database $(python get_database_url.py) --directory ./data/migrations --count 1
 pybabel_extract:
 	pybabel extract --input-dirs=. -o ${LOCATIONS_PATH}/bot.pot --project=bot
 	# pybabel extract --input-dirs=. -o ./data/locales/bot.pot --project=bot
