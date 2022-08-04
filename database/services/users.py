@@ -13,20 +13,12 @@ def create_user(id: int, name: str, username: str):
     return user
 
 
-def edit_user(id: int, name: str, username: str):
+def get_or_create_user(id: int, name: str, username: str):
     user = get_user(id)
     if user:
         user.name = name
         user.username = username
         user.save()
-
-    return user
-
-
-def get_or_create_user(id: int, name: str, username: str):
-    user = get_user(id)
-    if user:
-        user = edit_user(id, name, username)
     else:
         user = create_user(id, name, username)
 

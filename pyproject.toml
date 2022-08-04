@@ -2,16 +2,19 @@
 name = "music-bot"
 version = "0.1.0"
 description = ""
-authors = ["Artem <artemilienkono@gmail.com>"]
+authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.8"
+lxml = "^4.9.1"
+beautifulsoup4 = "^4.11.1"
 aiogram = "^2.21"
-peewee = "^3.15.1"
-environs = "^9.5.0"
-aioredis = "^2.0.1"
 loguru = "^0.6.0"
+requests = "^2.28.1"
+peewee = "^3.15.1"
 peewee-migrate = "^1.4.12"
+webdriver-manager = "^3.8.3"
+bs4 = "^0.0.1"
 
 [tool.poetry.dev-dependencies]
 
