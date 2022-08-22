@@ -26,4 +26,4 @@ def get_text(href: str):
         r'(\d*\s*(Куплет|куплет|(Пред|пред)*Припев|(Пред|пред)*припев|Приспів|приспів|Брідж|брідж|Бридж|бридж):*)',
         r'\n<b>\1</b>', e) for e in elements if
         not re.match('(\s{2,}|\s[A-Z]|#|H|A|D|F|E|C|G|Hm|Em|Cm|Am|Bm|Bb|Ab|Eb|Cb)', e)]
-    return text
+    return '\n'.join(text)

@@ -1,4 +1,4 @@
-from peewee import IntegerField, CharField
+from peewee import IntegerField, CharField, ForeignKeyField
 from .base import BaseModel
 
 
@@ -10,3 +10,11 @@ class User(BaseModel):
 
     class Meta:
         table_name = 'users'
+
+
+class UserAccess(BaseModel):
+    user = ForeignKeyField(User, unique=False)
+    access = ForeignKeyField(User, unique=False)
+
+    class Meta:
+        table_name = 'user_access'
