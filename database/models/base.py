@@ -1,5 +1,5 @@
 from peewee import Model
-from data.config import database
+from loader import database
 
 
 class BaseModel(Model):

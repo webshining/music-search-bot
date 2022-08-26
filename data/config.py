@@ -1,5 +1,4 @@
 from environs import Env
-from peewee import SqliteDatabase, PostgresqlDatabase
 
 env = Env()
 env.read_env()
@@ -19,8 +18,3 @@ RD_HOST = env.str('RD_HOST', None)
 RD_PORT = env.int('RD_PORT', None)
 
 I18N_DOMAIN = 'bot'
-
-if DB_PORT and DB_HOST and DB_PASS and DB_USER and DB_NAME:
-    database = PostgresqlDatabase(DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST, port=DB_PORT)
-else:
-    database = SqliteDatabase('./data/database.sqlite')

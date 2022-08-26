@@ -65,21 +65,10 @@ def migrate(migrator: Migrator, database, fake=False, **kwargs):
         class Meta:
             table_name = "musics"
 
-    @migrator.create_model
-    class UserAccess(pw.Model):
-        id = pw.AutoField()
-        user = pw.ForeignKeyField(backref='useraccess_set', column_name='user_id', field='id', model=migrator.orm['users'])
-        access = pw.ForeignKeyField(backref='useraccess_set', column_name='access_id', field='id', model=migrator.orm['users'])
-
-        class Meta:
-            table_name = "user_access"
-
 
 
 def rollback(migrator: Migrator, database, fake=False, **kwargs):
     """Write your rollback migrations here."""
-
-    migrator.remove_model('user_access')
 
     migrator.remove_model('users')
 
