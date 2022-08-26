@@ -1,2 +1,2 @@
-from .misc import logger
+from .logging import logger
 from .parse import *

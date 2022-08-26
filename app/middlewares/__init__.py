@@ -1,7 +1,5 @@
-from aiogram import Dispatcher
-
-from .user import UserMiddleware
-
-
-def setup_middlewares(dp: Dispatcher):
+def setup_middlewares(dp):
+    from .user import UserMiddleware
+    from .inter import i18n
     dp.setup_middleware(UserMiddleware())
+    dp.setup_middleware(i18n)

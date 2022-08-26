@@ -11,7 +11,7 @@ def get_html(url: str):
     return requests.get(url, headers=HEADERS)
 
 
-def find_songs(name: str):
+def get_musics(name: str):
     name = '+'.join(name.split(' '))
     soup = BeautifulSoup(get_html(f'{URL}/search?name={name}').text, 'html.parser')
     result = soup.find_all('div', class_='media-body text-truncate')

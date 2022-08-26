@@ -7,7 +7,7 @@ def get_user(id: int):
     return user
 
 
-def create_user(id: int, name: str, username: str):
+def create_user(id: int, name: str, username: str = None):
     user = User.create(id=id, name=name, username=username)
 
     return user
