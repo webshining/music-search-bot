@@ -5,6 +5,7 @@ from aiogram.types import Message, CallbackQuery
 from app.keyboards import get_musics_markup, get_music_markup
 from loader import dp, _
 from utils import get_musics, get_text
+from database import create_music, delete_music
 
 
 class SearchState(StatesGroup):
@@ -30,9 +31,20 @@ async def search_name_handler(message: Message, state: FSMContext):
 
 @dp.callback_query_handler(lambda call: call.data.startswith('search'))
 async def search_text_handler(call: CallbackQuery, state: FSMContext, user):
+    call.answer
     if call.data[7:] == 'back':
         data = await state.get_data()
-        await call.message.edit_text(_('Select song:'), reply_markup=get_musics_markup('search', data.get('musics')))
+        return await call.message.edit_text(_('Select song:'), reply_markup=get_musics_markup('search', data.get('musics')))
+    if call.data[7:].startswith('add'):
+        href, name, text = get_text(call.data[11:])
+        create_music(href, name, text, user)        
+        await call.message.edit_reply_markup(reply_markup=get_music_markup('search', True, href))
+        return await call.message.answer(_('The song has been added to your library'))
+    if call.data[7:].startswith('delete'):
+        href, name, text = get_text(call.data[14:])
+        delete_music(href, user)
+        await call.message.edit_reply_markup(reply_markup=get_music_markup('search', False, href))
+        return await call.message.answer(_('The song has been deleted from your library'))
     else:
-        text = get_text(call.data[7:])
-        await call.message.edit_text(text, reply_markup=get_music_markup('search', False))
+        href, name, text = get_text(call.data[7:])
+        await call.message.edit_text(text, reply_markup=get_music_markup('search', href in [m.href for m in user.musics], href))

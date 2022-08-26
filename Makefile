@@ -1,10 +1,9 @@
-RUN_ARGS := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
 LOCATIONS_PATH := ./data/locales
 MIGRATIONS_PATH := ./data/migrations
 DATABASE_URL := $(shell python get_database_url.py)
 
 db_revision:
-	pw_migrate create --auto --database ${DATABASE_URL} --directory ${MIGRATIONS_PATH} ${RUN_ARGS}
+	pw_migrate create --auto --database ${DATABASE_URL} --directory ${MIGRATIONS_PATH} migrate
 	# pw_migrate create --auto --database $(python get_database_url.py) --directory ./data/migrations migrate
 db_migrate:
 	pw_migrate migrate --database ${DATABASE_URL} --directory ${MIGRATIONS_PATH}

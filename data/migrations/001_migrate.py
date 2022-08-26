@@ -48,7 +48,7 @@ def migrate(migrator: Migrator, database, fake=False, **kwargs):
     class User(pw.Model):
         id = pw.IntegerField(primary_key=True)
         name = pw.CharField(max_length=255)
-        username = pw.CharField(max_length=255)
+        username = pw.CharField(max_length=255, null=True)
         status = pw.CharField(constraints=[SQL("DEFAULT 'user'")], default='user', max_length=255)
 
         class Meta:
@@ -57,8 +57,8 @@ def migrate(migrator: Migrator, database, fake=False, **kwargs):
     @migrator.create_model
     class Music(pw.Model):
         id = pw.IntegerField(primary_key=True)
+        href = pw.CharField(max_length=255)
         name = pw.CharField(max_length=255)
-        file_id = pw.CharField(max_length=255)
         text = pw.CharField(max_length=255, null=True)
         user = pw.ForeignKeyField(backref='musics', column_name='user_id', field='id', model=migrator.orm['users'])
 
