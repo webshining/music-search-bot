@@ -1,0 +1,49 @@
+# English translations for bot.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the bot project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bot VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-08-27 02:03+0300\n"
+"PO-Revision-Date: 2022-08-27 01:43+0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: app/handlers/user/library.py:12
+msgid "Library is empty!"
+msgstr ""
+
+#: app/handlers/user/library.py:13 app/handlers/user/search.py:26
+#: app/handlers/user/search.py:35
+msgid "Select song:"
+msgstr ""
+
+#: app/handlers/user/search.py:16
+msgid "Enter song title:"
+msgstr ""
+
+#: app/handlers/user/search.py:24
+msgid "Song not found, please enter another title:"
+msgstr ""
+
+#: app/keyboards/music.py:10
+msgid "Remove from library"
+msgstr ""
+
+#: app/keyboards/music.py:10
+msgid "Add to library"
+msgstr ""
+
+#: app/keyboards/music.py:12
+msgid "Back"
+msgstr ""
+

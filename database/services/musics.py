@@ -6,6 +6,11 @@ def create_music(name: str, file_id: str, text: str, user: int):
     return music
 
 
+
+def get_music(id: int = None, href: str = None):
+    return Music.get_by_id(id)
+
+
 def delete_music(id: int):
     music = Music.get_by_id(id)
     music.delete_instance()
