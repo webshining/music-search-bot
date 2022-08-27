@@ -26,18 +26,18 @@ async def search_name_handler(message: Message, state: FSMContext):
     else:
         await message.answer(_('Select song:'), reply_markup=get_musics_markup('search', musics))
         await state.finish()
-        await state.update_data(musics = musics)
+        await state.update_data(name=message.text)
 
 
 @dp.callback_query_handler(lambda call: call.data.startswith('search'))
 async def search_text_handler(call: CallbackQuery, state: FSMContext, user):
-    call.answer
-    if call.data[7:] == 'back':
+    if call.data[7:].startswith('back'):
         data = await state.get_data()
-        return await call.message.edit_text(_('Select song:'), reply_markup=get_musics_markup('search', data.get('musics')))
+        return await call.message.edit_text(_('Select song:'),
+                                            reply_markup=get_musics_markup('search', get_musics(data.get('name'))))
     if call.data[7:].startswith('add'):
         href, name, text = get_text(call.data[11:])
-        create_music(href, name, text, user)        
+        create_music(href, name, text, user)
         await call.message.edit_reply_markup(reply_markup=get_music_markup('search', True, href))
         return await call.message.answer(_('The song has been added to your library'))
     if call.data[7:].startswith('delete'):
@@ -47,4 +47,6 @@ async def search_text_handler(call: CallbackQuery, state: FSMContext, user):
         return await call.message.answer(_('The song has been deleted from your library'))
     else:
         href, name, text = get_text(call.data[7:])
-        await call.message.edit_text(text, reply_markup=get_music_markup('search', href in [m.href for m in user.musics], href))
+        await call.message.edit_text(text,
+                                     reply_markup=get_music_markup('search', href in [m.href for m in user.musics],
+                                                                   href))

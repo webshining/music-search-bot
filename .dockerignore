@@ -1,0 +1,8 @@
+Dockerfile
+docker-compose.yml
+**/__pycache__
+Makefile
+poetry.lock
+pyproject.toml
+.git
+.gitignore

@@ -7,6 +7,7 @@ class Music(BaseModel):
     href: str
     name: str
 
+
 URL = 'https://holychords.pro'
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'}
@@ -22,7 +23,7 @@ def get_musics(name: str):
     soup = BeautifulSoup(get_html(f'{URL}/search?name={name}').text, 'html.parser')
     result = soup.find_all('div', class_='media-body text-truncate')
     items = [r.find('a') for r in result]
-    return [Music(*{'href': i['href'][1:], 'name': i.get_text()}) for i in items]
+    return [Music(**{'href': i['href'][1:], 'name': i.get_text()}) for i in items]
 
 
 def get_text(href: str):
@@ -32,5 +33,5 @@ def get_text(href: str):
         r'(\d*\s*(Куплет|куплет|(Пред|пред)*Припев|(Пред|пред)*припев|Приспів|приспів|Брідж|брідж|Бридж|бридж):*)',
         r'\n<b>\1</b>', e) for e in elements if
         not re.match('(\s{2,}|\s[A-Z]|#|H|A|D|F|E|C|G|Hm|Em|Cm|Am|Bm|Bb|Ab|Eb|Cb)', e)]
-    name = soup.find('h1', class_='h5 mt-1 mb-0 text-truncate').get_text()
+    name = soup.find("meta", property="music:song")['content']
     return href, name, '\n'.join(text)

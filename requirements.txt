@@ -1,10 +1,8 @@
-loguru
-aiogram
-lxml
-beautifulsoup4
-peewee
-peewee
-requests
-environs
+aiogram~=2.22.1
+environs~=9.5.0
+peewee~=3.15.2
+requests~=2.28.1
+pydantic~=1.9.2
+beautifulsoup4~=4.11.1
+loguru~=0.6.0
 aioredis
-pydantic

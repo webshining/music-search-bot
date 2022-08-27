@@ -6,7 +6,6 @@ def create_music(href: str, name: str, text: str, user: int):
     return music
 
 
-
 def get_music(id: int = None, href: str = None):
     return Music.get_or_none((Music.id == id) if id else (Music.href == href))
 
