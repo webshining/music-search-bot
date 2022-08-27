@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bot VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-08-27 02:03+0300\n"
-"PO-Revision-Date: 2022-08-27 01:43+0300\n"
+"POT-Creation-Date: 2022-08-27 18:35+0300\n"
+"PO-Revision-Date: 2022-08-27 18:35+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
@@ -18,21 +18,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.9.1\n"
 
-#: app/handlers/user/library.py:12
+#: app/commands/default.py:7
+msgid "start bot"
+msgstr ""
+
+#: app/commands/default.py:8
+msgid "search song"
+msgstr ""
+
+#: app/commands/default.py:9
+msgid "library"
+msgstr ""
+
+#: app/handlers/cancel.py:10
+msgid "All state reset!"
+msgstr ""
+
+#: app/handlers/user/library.py:13
 msgid "Library is empty!"
 msgstr ""
 
-#: app/handlers/user/library.py:13 app/handlers/user/search.py:26
-#: app/handlers/user/search.py:35
+#: app/handlers/user/library.py:14 app/handlers/user/library.py:27
+#: app/handlers/user/search.py:27 app/handlers/user/search.py:36
 msgid "Select song:"
 msgstr ""
 
-#: app/handlers/user/search.py:16
+#: app/handlers/user/search.py:17
 msgid "Enter song title:"
 msgstr ""
 
-#: app/handlers/user/search.py:24
+#: app/handlers/user/search.py:25
 msgid "Song not found, please enter another title:"
+msgstr ""
+
+#: app/handlers/user/search.py:42
+msgid "The song has been added to your library"
+msgstr ""
+
+#: app/handlers/user/search.py:47
+msgid "The song has been deleted from your library"
 msgstr ""
 
 #: app/keyboards/music.py:10
