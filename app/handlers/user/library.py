@@ -15,5 +15,5 @@ async def linrary_handler(message: Message, user):
 
 @dp.callback_query_handler(lambda call: call.data.startswith('library'))
 async def library_callback_handler(call: CallbackQuery):
-    music = get_music(call.data[8:])
+    music = get_music(href=call.data[8:])
     await call.message.edit_text(music.text)

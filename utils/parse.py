@@ -1,5 +1,11 @@
 import requests, re
+from pydantic import BaseModel
 from bs4 import BeautifulSoup
+
+
+class Music(BaseModel):
+    href: str
+    name: str
 
 URL = 'https://holychords.pro'
 HEADERS = {
@@ -16,7 +22,7 @@ def get_musics(name: str):
     soup = BeautifulSoup(get_html(f'{URL}/search?name={name}').text, 'html.parser')
     result = soup.find_all('div', class_='media-body text-truncate')
     items = [r.find('a') for r in result]
-    return [{'href': i['href'][1:], 'name': i.get_text()} for i in items]
+    return [Music(*{'href': i['href'][1:], 'name': i.get_text()}) for i in items]
 
 
 def get_text(href: str):
