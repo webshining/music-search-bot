@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bot VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-08-27 18:35+0300\n"
+"POT-Creation-Date: 2022-08-27 21:09+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,10 @@ msgstr ""
 msgid "library"
 msgstr ""
 
+#: app/commands/default.py:10
+msgid "cancel"
+msgstr ""
+
 #: app/handlers/cancel.py:10
 msgid "All state reset!"
 msgstr ""
@@ -38,7 +42,7 @@ msgid "Library is empty!"
 msgstr ""
 
 #: app/handlers/user/library.py:14 app/handlers/user/library.py:27
-#: app/handlers/user/search.py:27 app/handlers/user/search.py:36
+#: app/handlers/user/search.py:27 app/handlers/user/search.py:37
 msgid "Select song:"
 msgstr ""
 
@@ -50,11 +54,15 @@ msgstr ""
 msgid "Song not found, please enter another title:"
 msgstr ""
 
-#: app/handlers/user/search.py:42
+#: app/handlers/user/search.py:40
+msgid "Looks like the last search has been deleted."
+msgstr ""
+
+#: app/handlers/user/search.py:45
 msgid "The song has been added to your library"
 msgstr ""
 
-#: app/handlers/user/search.py:47
+#: app/handlers/user/search.py:53
 msgid "The song has been deleted from your library"
 msgstr ""
 

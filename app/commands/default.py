@@ -7,7 +7,7 @@ def get_default_commands(lang: str = 'en'):
         BotCommand('/start', _('start bot', locale=lang)),
         BotCommand('/search', _('search song', locale=lang)),
         BotCommand('/library', _('library', locale=lang)),
-        BotCommand('/cancel', _('Reset state', locale=lang))
+        BotCommand('/cancel', _('cancel', locale=lang))
     ]
     return commands
 

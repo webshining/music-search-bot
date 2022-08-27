@@ -1,4 +1,4 @@
-# Ukrainian translations for bot.
+# Russian translations for bot.
 # Copyright (C) 2022 ORGANIZATION
 # This file is distributed under the same license as the bot project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bot VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-08-27 18:35+0300\n"
-"PO-Revision-Date: 2022-08-27 18:35+0300\n"
+"POT-Creation-Date: 2022-08-27 21:09+0300\n"
+"PO-Revision-Date: 2022-08-27 20:55+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language: uk\n"
-"Language-Team: uk <LL@li.org>\n"
+"Language: ru\n"
+"Language-Team: ru <LL@li.org>\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 "MIME-Version: 1.0\n"
@@ -21,54 +21,65 @@ msgstr ""
 
 #: app/commands/default.py:7
 msgid "start bot"
-msgstr "почати використання"
+msgstr "начать"
 
 #: app/commands/default.py:8
 msgid "search song"
-msgstr "шукати музику"
+msgstr "искать песню"
 
 #: app/commands/default.py:9
 msgid "library"
-msgstr "бібліотека"
+msgstr "библиотека"
+
+#: app/commands/default.py:10
+msgid "cancel"
+msgstr "завершить действие"
 
 #: app/handlers/cancel.py:10
 msgid "All state reset!"
-msgstr "Всі дії були завершені!"
+msgstr "Все действия были завершены!"
 
 #: app/handlers/user/library.py:13
 msgid "Library is empty!"
-msgstr "Бібліотека порожня!"
+msgstr "Библиотека пуста!"
 
 #: app/handlers/user/library.py:14 app/handlers/user/library.py:27
-#: app/handlers/user/search.py:27 app/handlers/user/search.py:36
+#: app/handlers/user/search.py:27 app/handlers/user/search.py:37
 msgid "Select song:"
-msgstr "Оберіть пісню:"
+msgstr "Выберите песню:"
 
 #: app/handlers/user/search.py:17
 msgid "Enter song title:"
-msgstr "Введіть назву пісні:"
+msgstr "Введите название песни:"
 
 #: app/handlers/user/search.py:25
 msgid "Song not found, please enter another title:"
-msgstr "Пісню не було знайдено, введіть іншу назву:"
+msgstr "Песня не была найдена, введите другое название:"
 
-#: app/handlers/user/search.py:42
+#: app/handlers/user/search.py:40
+msgid "Looks like the last search has been deleted."
+msgstr "Похоже данные по прошлому поиску были удалены."
+
+#: app/handlers/user/search.py:45
 msgid "The song has been added to your library"
-msgstr "Пісню було додано до вашої бібліотеки"
+msgstr "Песня была добавлена в вашу библиотеку"
 
-#: app/handlers/user/search.py:47
+#: app/handlers/user/search.py:53
 msgid "The song has been deleted from your library"
-msgstr "Пісню було видалено з вашої бібліотеки"
+msgstr "Песня была удалена из вашей библиотеки"
 
 #: app/keyboards/music.py:10
 msgid "Remove from library"
-msgstr "Видалити з бібліотеки"
+msgstr "Удалить"
 
 #: app/keyboards/music.py:10
 msgid "Add to library"
-msgstr "Зберегти"
+msgstr "Сохранить"
 
 #: app/keyboards/music.py:12
 msgid "Back"
 msgstr "Назад"
+
+#~ msgid "Reset state"
+#~ msgstr ""
 

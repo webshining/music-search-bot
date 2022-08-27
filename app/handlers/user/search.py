@@ -33,8 +33,11 @@ async def search_name_handler(message: Message, state: FSMContext):
 async def search_text_handler(call: CallbackQuery, state: FSMContext, user):
     if call.data[7:].startswith('back'):
         data = await state.get_data()
-        return await call.message.edit_text(_('Select song:'),
-                                            reply_markup=get_musics_markup('search', get_musics(data.get('name'))))
+        try:
+            return await call.message.edit_text(_('Select song:'),
+                                                reply_markup=get_musics_markup('search', get_musics(data.get('name'))))
+        except:
+            return await call.message.edit_text(_('Looks like the last search has been deleted.'), reply_markup=None)
     if call.data[7:].startswith('add'):
         href, name, text = get_text(call.data[11:])
         create_music(href, name, text, user)
@@ -42,7 +45,10 @@ async def search_text_handler(call: CallbackQuery, state: FSMContext, user):
         return await call.message.answer(_('The song has been added to your library'))
     if call.data[7:].startswith('delete'):
         href, name, text = get_text(call.data[14:])
-        delete_music(href, user)
+        try:
+            delete_music(href, user)
+        except:
+            pass
         await call.message.edit_reply_markup(reply_markup=get_music_markup('search', False, href))
         return await call.message.answer(_('The song has been deleted from your library'))
     else:
