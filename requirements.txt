@@ -1,0 +1,10 @@
+loguru
+aiogram
+lxml
+beautifulsoup4
+peewee
+peewee
+requests
+environs
+aioredis
+pydantic
