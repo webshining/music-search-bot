@@ -6,3 +6,5 @@ pydantic~=1.9.2
 beautifulsoup4~=4.11.1
 loguru~=0.6.0
 aioredis
+peewee-migrate
+psycopg2
