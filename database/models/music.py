@@ -1,13 +1,13 @@
-from peewee import IntegerField, CharField, ForeignKeyField
+from peewee import PrimaryKeyField, CharField, ForeignKeyField, TextField
 from .base import BaseModel
 from .user import User
 
 
 class Music(BaseModel):
-    id = IntegerField(primary_key=True)
+    id = PrimaryKeyField()
     href = CharField(null=False)
     name = CharField(null=False)
-    text = CharField(null=True)
+    text = TextField(null=False)
     user = ForeignKeyField(User, backref='musics', null=False)
 
     class Meta:
