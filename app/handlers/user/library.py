@@ -22,7 +22,7 @@ async def library_callback_handler(call: CallbackQuery, user):
     if call.data[8:].startswith('add'):
         href, name, text = get_text(call.data[12:])
         create_music(href, name, text, user)
-        return await call.message.edit_reply_markup(reply_markup=get_music_markup('library', False, call.data[8:]))
+        return await call.message.edit_reply_markup(reply_markup=get_music_markup('library', True, call.data[8:]))
     if call.data[8:].startswith('back'):
         return await call.message.edit_text(text=_('Select song:'), reply_markup=get_musics_markup('library', user.musics))
     music = get_music(href=call.data[8:])
