@@ -1,8 +1,8 @@
 from ..models import Music
 
 
-def create_music(href: str, name: str, text: str, user: int):
-    music = Music.create(href=href, name=name, text=text, user=user)
+def create_music(href: str, music_href: str, name: str, text: str, user: int):
+    music = Music.create(href=href, music_href=music_href, name=name, text=text, user=user)
     return music
 
 

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bot VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-08-27 21:09+0300\n"
-"PO-Revision-Date: 2022-08-27 20:54+0300\n"
+"POT-Creation-Date: 2022-09-07 18:25+0300\n"
+"PO-Revision-Date: 2022-09-07 18:14+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
@@ -38,12 +38,12 @@ msgstr ""
 msgid "All state reset!"
 msgstr ""
 
-#: app/handlers/user/library.py:13
-msgid "Library is empty!"
+#: app/handlers/user/library.py:13 app/handlers/user/library.py:22
+msgid "Library is empty"
 msgstr ""
 
-#: app/handlers/user/library.py:14 app/handlers/user/library.py:27
-#: app/handlers/user/search.py:27 app/handlers/user/search.py:37
+#: app/handlers/user/library.py:14 app/handlers/user/library.py:22
+#: app/handlers/user/search.py:27 app/handlers/user/search.py:40
 msgid "Select song:"
 msgstr ""
 
@@ -55,16 +55,12 @@ msgstr ""
 msgid "Song not found, please enter another title:"
 msgstr ""
 
-#: app/handlers/user/search.py:40
-msgid "Looks like the last search has been deleted."
+#: app/handlers/user/search.py:39
+msgid "Looks like the last search has been deleted"
 msgstr ""
 
-#: app/handlers/user/search.py:45
-msgid "The song has been added to your library"
-msgstr ""
-
-#: app/handlers/user/search.py:53
-msgid "The song has been deleted from your library"
+#: app/handlers/user/search.py:57
+msgid "This song has no text"
 msgstr ""
 
 #: app/keyboards/music.py:10
@@ -76,9 +72,16 @@ msgid "Add to library"
 msgstr ""
 
 #: app/keyboards/music.py:12
+msgid "Music"
+msgstr ""
+
+#: app/keyboards/music.py:13
 msgid "Back"
 msgstr ""
 
-#~ msgid "Reset state"
+#~ msgid "Library is empty!"
+#~ msgstr ""
+
+#~ msgid "Looks like the last search has been deleted."
 #~ msgstr ""
 

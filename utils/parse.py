@@ -33,5 +33,28 @@ def get_text(href: str):
         r'(\d*\s*(Куплет|куплет|(Пред|пред)*Припев|(Пред|пред)*припев|Приспів|приспів|Брідж|брідж|Бридж|бридж):*)',
         r'\n<b>\1</b>', e) for e in elements if
         not re.match('(\s{2,}|\s[A-Z]|#|H|A|D|F|E|C|G|Hm|Em|Cm|Am|Bm|Bb|Ab|Eb|Cb)', e)]
+    return '\n'.join(text)
+
+
+def get_name(href: str):
+    soup = BeautifulSoup(get_html(f'{URL}/{href}').text, 'html.parser')
     name = soup.find("meta", property="music:song")['content']
+    return name
+
+
+def get_music_href(href: str):
+    soup = BeautifulSoup(get_html(f'{URL}/{href}').text, 'html.parser')
+    href = soup.find('div', class_="mr-3 play")['data-audio-file'].split('/uploads/music')[1]
+    return href
+
+
+def get_music_data(href: str):
+    soup = BeautifulSoup(get_html(f'{URL}/{href}').text, 'html.parser')
+    elements = soup.find('pre', id='music_text').get_text(separator='\n').split('\n')
+    text = [re.sub(
+        r'(\d*\s*(Куплет|куплет|(Пред|пред)*Припев|(Пред|пред)*припев|Приспів|приспів|Брідж|брідж|Бридж|бридж):*)',
+        r'\n<b>\1</b>', e) for e in elements if
+        not re.match('(\s{2,}|\s[A-Z]|#|H|A|D|F|E|C|G|Hm|Em|Cm|Am|Bm|Bb|Ab|Eb|Cb)', e)]
+    name = soup.find("meta", property="music:song")['content']
+    href = soup.find('div', class_="mr-3 play")['data-audio-file'].split('/uploads/music')[1]
     return href, name, '\n'.join(text)

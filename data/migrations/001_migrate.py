@@ -57,6 +57,7 @@ def migrate(migrator: Migrator, database, fake=False, **kwargs):
     @migrator.create_model
     class Music(pw.Model):
         href = pw.CharField(max_length=255)
+        music_href = pw.CharField(max_length=255)
         name = pw.CharField(max_length=255)
         text = pw.TextField()
         user = pw.ForeignKeyField(backref='musics', column_name='user_id', field='id', model=migrator.orm['users'])

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bot VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-08-27 21:09+0300\n"
-"PO-Revision-Date: 2022-08-27 20:55+0300\n"
+"POT-Creation-Date: 2022-09-07 18:25+0300\n"
+"PO-Revision-Date: 2022-09-07 18:15+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uk\n"
 "Language-Team: uk <LL@li.org>\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: app/commands/default.py:7
 msgid "start bot"
-msgstr "почати"
+msgstr "розпочати"
 
 #: app/commands/default.py:8
 msgid "search song"
@@ -33,40 +33,37 @@ msgstr "бібліотека"
 
 #: app/commands/default.py:10
 msgid "cancel"
-msgstr "завершити дію"
+msgstr "звершити дії"
 
 #: app/handlers/cancel.py:10
+#, fuzzy
 msgid "All state reset!"
-msgstr "Всі дії були завершені!"
+msgstr "Ваш стан скинуто"
 
-#: app/handlers/user/library.py:13
-msgid "Library is empty!"
-msgstr "Бібліотека порожня!"
+#: app/handlers/user/library.py:13 app/handlers/user/library.py:22
+msgid "Library is empty"
+msgstr "Бібліотека порожня"
 
-#: app/handlers/user/library.py:14 app/handlers/user/library.py:27
-#: app/handlers/user/search.py:27 app/handlers/user/search.py:37
+#: app/handlers/user/library.py:14 app/handlers/user/library.py:22
+#: app/handlers/user/search.py:27 app/handlers/user/search.py:40
 msgid "Select song:"
 msgstr "Оберіть пісню:"
 
 #: app/handlers/user/search.py:17
 msgid "Enter song title:"
-msgstr "Введіть ім'я пісні:"
+msgstr "Введіть назву пісні:"
 
 #: app/handlers/user/search.py:25
 msgid "Song not found, please enter another title:"
 msgstr "Пісню не було знайдено, введіть іншу назву:"
 
-#: app/handlers/user/search.py:40
-msgid "Looks like the last search has been deleted."
-msgstr "Схоже інформацію що до минулого пошуку було видалено."
+#: app/handlers/user/search.py:39
+msgid "Looks like the last search has been deleted"
+msgstr "Схоже останній пошук було видалено"
 
-#: app/handlers/user/search.py:45
-msgid "The song has been added to your library"
-msgstr "Пісню було додано до вашої бібліотеки"
-
-#: app/handlers/user/search.py:53
-msgid "The song has been deleted from your library"
-msgstr "Пісню було видалено з вашої бібліотеки"
+#: app/handlers/user/search.py:57
+msgid "This song has no text"
+msgstr "У цієї пісні немає тексту"
 
 #: app/keyboards/music.py:10
 msgid "Remove from library"
@@ -77,9 +74,10 @@ msgid "Add to library"
 msgstr "Зберегти"
 
 #: app/keyboards/music.py:12
+msgid "Music"
+msgstr "Музика"
+
+#: app/keyboards/music.py:13
 msgid "Back"
 msgstr "Назад"
-
-#~ msgid "Reset state"
-#~ msgstr "Скинути всі дії"
 

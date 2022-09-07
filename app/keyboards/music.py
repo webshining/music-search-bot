@@ -9,6 +9,7 @@ def get_music_markup(data: str, delete: boolean, query: str = None):
     buttons = [
         InlineKeyboardButton(text=_('Remove from library') if delete else _('Add to library'), 
                              callback_data=f'{data}_{"delete" if delete else "add"}_{query}'),
+        InlineKeyboardButton(text=_('Music'), callback_data=f'{data}_music_{query}'),
         InlineKeyboardButton(text=_('Back'), callback_data=f'{data}_back')
     ]
     markup.add(*buttons)

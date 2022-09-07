@@ -4,7 +4,7 @@ from aiogram.dispatcher.filters.state import StatesGroup, State
 from aiogram.types import Message, CallbackQuery
 from app.keyboards import get_musics_markup, get_music_markup
 from loader import dp, _
-from utils import get_musics, get_text
+from utils import get_musics, get_music_data, get_music_href
 from database import create_music, delete_music
 
 
@@ -31,28 +31,29 @@ async def search_name_handler(message: Message, state: FSMContext):
 
 @dp.callback_query_handler(lambda call: call.data.startswith('search'))
 async def search_text_handler(call: CallbackQuery, state: FSMContext, user):
-    if call.data[7:].startswith('back'):
-        data = await state.get_data()
+    data = await state.get_data()
+    call_data = call.data.split('_')
+    if call_data[1] == 'back':
+        if not data.get('name'):
+            return await call.message.edit_text(text=_('Looks like the last search has been deleted') + '🤔', reply_markup=None)
+        musics = get_musics(data.get('name'))
+        await call.message.edit_text(text=_('Select song:'), reply_markup=get_musics_markup('search', musics))
+    elif call_data[1] == 'delete':
         try:
-            return await call.message.edit_text(_('Select song:'),
-                                                reply_markup=get_musics_markup('search', get_musics(data.get('name'))))
-        except:
-            return await call.message.edit_text(_('Looks like the last search has been deleted.'), reply_markup=None)
-    if call.data[7:].startswith('add'):
-        href, name, text = get_text(call.data[11:])
-        create_music(href, name, text, user)
-        await call.message.edit_reply_markup(reply_markup=get_music_markup('search', True, href))
-        return await call.message.answer(_('The song has been added to your library'))
-    if call.data[7:].startswith('delete'):
-        href, name, text = get_text(call.data[14:])
-        try:
-            delete_music(href, user)
+            delete_music(call_data[2], user.id)
         except:
             pass
-        await call.message.edit_reply_markup(reply_markup=get_music_markup('search', False, href))
-        return await call.message.answer(_('The song has been deleted from your library'))
+        await call.message.edit_reply_markup(reply_markup=get_music_markup('search', False, call_data[2]))
+    elif call_data[1] == 'add':
+        music_href, name, text = get_music_data(call_data[2])
+        create_music(call_data[2], music_href, name, text, user.id)
+        await call.message.edit_reply_markup(reply_markup=get_music_markup('search', True, call_data[2]))
+    elif call_data[1] == 'music':
+        music_href = get_music_href(href=call_data[2])
+        await call.message.answer_audio(audio=f'https://holychords.pro/uploads/music{music_href}')
     else:
-        href, name, text = get_text(call.data[7:])
-        await call.message.edit_text(text,
-                                     reply_markup=get_music_markup('search', href in [m.href for m in user.musics],
-                                                                   href))
+        music_href, name, text = get_music_data(call_data[1])
+        if not text:
+            return await call.message.edit_text(_('This song has no text') + '😥', reply_markup=None)
+        await call.message.edit_text(text, reply_markup=get_music_markup('search', music_href in [u.music_href for u in user.musics], call_data[1]))
+    await call.answer()

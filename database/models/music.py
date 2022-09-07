@@ -6,8 +6,9 @@ from .user import User
 class Music(BaseModel):
     id = PrimaryKeyField(primary_key=True)
     href = CharField(null=False)
+    music_href = CharField(null=False)
     name = CharField(null=False)
-    text = TextField(null=True)
+    text = TextField(null=False)
     user = ForeignKeyField(User, backref='musics', null=False)
 
     class Meta:
