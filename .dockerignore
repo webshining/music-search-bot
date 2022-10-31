@@ -1,1 +1,9 @@
-**/__pycache__
+__pycache__
+.venv
+.idea
+.env.ren
+.git
+docker-compose.yml
+Dockerfile
+README.md
+redis.conf
