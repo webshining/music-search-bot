@@ -44,6 +44,6 @@ async def _search_callback(call: CallbackQuery, state: FSMContext):
     else:
         text = get_text(call.data[7:])
         if call.inline_message_id:
-            await bot.edit_message_text(text=text, inline_message_id=call.inline_message_id, reply_markup=get_back_markup('search'))
+            await bot.edit_message_text(text=text, inline_message_id=call.inline_message_id, reply_markup=None)
         else:
             await call.message.edit_text(text=text, reply_markup=get_back_markup('search'))
