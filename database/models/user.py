@@ -1,12 +1,15 @@
-from peewee import IntegerField, CharField, ForeignKeyField
-from .base import BaseModel
+from pydantic import BaseModel
+
+from loader import db
+from .song import Song
 
 
 class User(BaseModel):
-    id = IntegerField(primary_key=True)
-    name = CharField()
-    username = CharField(null=True)
-    status = CharField(default='user')
+    id: int
+    name: str
+    username: str
+    lang: str
+    songs: list[Song] = []
 
-    class Meta:
-        table_name = 'users'
+
+users_collection = db["users"]

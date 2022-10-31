@@ -1,2 +1,2 @@
-from .user import User
-from .music import Music
+from .user import User, users_collection
+from .song import Song

@@ -1,60 +1,33 @@
-import requests, re
-from pydantic import BaseModel
+import re
+import requests
 from bs4 import BeautifulSoup
+from fake_useragent import UserAgent
 
-
-class Music(BaseModel):
-    href: str
-    name: str
-
-
+ua = UserAgent()
 URL = 'https://holychords.pro'
 HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36'}
-CHORDS = ['C', 'D', '']
+    'User-Agent': ua.chrome
+}
 
 
-def get_html(url: str):
-    return requests.get(url, headers=HEADERS)
-
-
-def get_musics(name: str):
-    name = '+'.join(name.split(' '))
-    soup = BeautifulSoup(get_html(f'{URL}/search?name={name}').text, 'html.parser')
-    result = soup.find_all('div', class_='media-body text-truncate')
-    items = [r.find('a') for r in result]
-    return [Music(**{'href': i['href'][1:], 'name': i.get_text()}) for i in items]
+def get_names(name: str):
+    if name:
+        name = '+'.join(name.split(' '))
+        soup = BeautifulSoup(requests.get(f"{URL}/search?name={name}", headers=HEADERS).text, "html.parser")
+        names = soup.findAll('div', class_='media-body text-truncate')
+        names = [{"href": n.find('a')['href'], "name": n.find('a').text,
+                "group": re.sub('\\n|\\t', '', n.find('div', class_='text-muted text-truncate w-100').text)} for n in names]
+    return names if name else None
 
 
 def get_text(href: str):
-    soup = BeautifulSoup(get_html(f'{URL}/{href}').text, 'html.parser')
-    elements = soup.find('pre', id='music_text').get_text(separator='\n').split('\n')
-    text = [re.sub(
-        r'(\d*\s*(Куплет|куплет|(Пред|пред)*Припев|(Пред|пред)*припев|Приспів|приспів|Брідж|брідж|Бридж|бридж):*)',
-        r'\n<b>\1</b>', e) for e in elements if
-        not re.match('(\s{2,}|\s[A-Z]|#|H|A|D|F|E|C|G|Hm|Em|Cm|Am|Bm|Bb|Ab|Eb|Cb)', e)]
+    soup = BeautifulSoup(requests.get(f"{URL}/{href}", headers=HEADERS).text, "html.parser")
+    text = soup.find('pre', id='music_text').get_text(separator='\n').split('\n')
+    text = [
+        re.sub(
+            r'(\d*\s*(Куплет|куплет|(Пред|пред)*Припев|(Пред|пред)*припев|Приспів|приспів|Брідж|брідж|Бридж|бридж):*)', 
+            r'\n<b>\1</b>', 
+            t
+        ) for t in text if not re.match('(\s{2,}|\s[A-Z]|#|H|A|D|F|E|C|G|Hm|Em|Cm|Am|Bm|Bb|Ab|Eb|Cb)', t)
+    ]
     return '\n'.join(text)
-
-
-def get_name(href: str):
-    soup = BeautifulSoup(get_html(f'{URL}/{href}').text, 'html.parser')
-    name = soup.find("meta", property="music:song")['content']
-    return name
-
-
-def get_music_href(href: str):
-    soup = BeautifulSoup(get_html(f'{URL}/{href}').text, 'html.parser')
-    href = soup.find('div', class_="mr-3 play")['data-audio-file'].split('/uploads/music')[1]
-    return href
-
-
-def get_music_data(href: str):
-    soup = BeautifulSoup(get_html(f'{URL}/{href}').text, 'html.parser')
-    elements = soup.find('pre', id='music_text').get_text(separator='\n').split('\n')
-    text = [re.sub(
-        r'(\d*\s*(Куплет|куплет|(Пред|пред)*Припев|(Пред|пред)*припев|Приспів|приспів|Брідж|брідж|Бридж|бридж):*)',
-        r'\n<b>\1</b>', e) for e in elements if
-        not re.match('(\s{2,}|\s[A-Z]|#|H|A|D|F|E|C|G|Hm|Em|Cm|Am|Bm|Bb|Ab|Eb|Cb)', e)]
-    name = soup.find("meta", property="music:song")['content']
-    href = soup.find('div', class_="mr-3 play")['data-audio-file'].split('/uploads/music')[1]
-    return href, name, '\n'.join(text)

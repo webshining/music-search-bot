@@ -1,87 +1,76 @@
-# English translations for bot.
+# English translations for PROJECT.
 # Copyright (C) 2022 ORGANIZATION
-# This file is distributed under the same license as the bot project.
+# This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: bot VERSION\n"
+"Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-09-07 18:25+0300\n"
-"PO-Revision-Date: 2022-09-07 18:14+0300\n"
+"POT-Creation-Date: 2022-10-31 23:38+0200\n"
+"PO-Revision-Date: 2022-10-26 18:57+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
-
-#: app/commands/default.py:7
-msgid "start bot"
-msgstr ""
+"Generated-By: Babel 2.10.3\n"
 
 #: app/commands/default.py:8
-msgid "search song"
+msgid "start chat"
 msgstr ""
 
 #: app/commands/default.py:9
-msgid "library"
-msgstr ""
-
-#: app/commands/default.py:10
-msgid "cancel"
+msgid "search song"
 msgstr ""
 
 #: app/handlers/cancel.py:10
-msgid "All state reset!"
+msgid "State reset!"
 msgstr ""
 
-#: app/handlers/user/library.py:13 app/handlers/user/library.py:22
-msgid "Library is empty"
+#: app/handlers/users/inline.py:18 app/handlers/users/search.py:41
+#: app/handlers/users/search.py:43
+msgid "Song not found"
 msgstr ""
 
-#: app/handlers/user/library.py:14 app/handlers/user/library.py:22
-#: app/handlers/user/search.py:27 app/handlers/user/search.py:40
+#: app/handlers/users/search.py:13
+msgid "Enter song name:"
+msgstr ""
+
+#: app/handlers/users/search.py:22 app/handlers/users/search.py:36
+#: app/handlers/users/search.py:38
 msgid "Select song:"
 msgstr ""
 
-#: app/handlers/user/search.py:17
-msgid "Enter song title:"
+#: app/handlers/users/search.py:25
+msgid "Song not found, enter correct name:"
 msgstr ""
 
-#: app/handlers/user/search.py:25
-msgid "Song not found, please enter another title:"
+#: app/handlers/users/start.py:11
+msgid ""
+"👋 Hello <b>{}</b>\n"
+"🚫 The library is temporarily disabled"
 msgstr ""
 
-#: app/handlers/user/search.py:39
-msgid "Looks like the last search has been deleted"
-msgstr ""
-
-#: app/handlers/user/search.py:57
-msgid "This song has no text"
-msgstr ""
-
-#: app/keyboards/music.py:10
-msgid "Remove from library"
-msgstr ""
-
-#: app/keyboards/music.py:10
-msgid "Add to library"
-msgstr ""
-
-#: app/keyboards/music.py:12
-msgid "Music"
-msgstr ""
-
-#: app/keyboards/music.py:13
+#: app/keyboards/back.py:10
 msgid "Back"
 msgstr ""
 
-#~ msgid "Library is empty!"
+#: app/keyboards/inline.py:10
+msgid "Search in another chat"
+msgstr ""
+
+#~ msgid "change language"
 #~ msgstr ""
 
-#~ msgid "Looks like the last search has been deleted."
+#~ msgid "Language changed!"
+#~ msgstr ""
+
+#~ msgid "You didn't enter anything"
+#~ msgstr ""
+
+#~ msgid "Hello <b>{}</b>"
 #~ msgstr ""
 

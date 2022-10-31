@@ -1,7 +1,8 @@
-def setup_middlewares(dp):
-    from .user import UserMiddleware
-    from .inter import i18n
-    from .logging import LoggingMiddleware
-    dp.setup_middleware(UserMiddleware())
-    dp.setup_middleware(i18n)
-    dp.setup_middleware(LoggingMiddleware())
+from loader import dp
+from .user import UserMiddleware
+from .inter import i18n_middleware
+
+if __name__ == 'app.middlewares':
+    dp.update.middleware(i18n_middleware)
+    dp.update.middleware(UserMiddleware())
+    

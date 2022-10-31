@@ -1,22 +1,20 @@
-from aiogram import Bot, Dispatcher, types
-from peewee import PostgresqlDatabase, SqliteDatabase
-from data.config import RD_DB, RD_HOST, RD_PORT, RD_PASS, DB_HOST, DB_PORT, DB_PASS, DB_NAME, DB_USER, TELEGRAM_BOT_TOKEN
-from app.middlewares.inter import i18n
+from aiogram import Bot, Dispatcher
+from motor.motor_tornado import MotorClient
 
+from data.config import TELEGRAM_BOT_TOKEN, RD_DB, RD_HOST, RD_PASS, RD_PORT, MONGO_URL
 
-bot = Bot(TELEGRAM_BOT_TOKEN, parse_mode=types.ParseMode.HTML, disable_web_page_preview=True)
+bot = Bot(TELEGRAM_BOT_TOKEN, parse_mode="HTML")
 if RD_DB and RD_HOST and RD_PORT:
-    from aiogram.contrib.fsm_storage.redis import RedisStorage2
-    storage = RedisStorage2(RD_HOST, RD_PORT, RD_DB, RD_PASS)
+    from aiogram.fsm.storage.redis import RedisStorage
+    from redis.asyncio.client import Redis
+    storage = RedisStorage(Redis(db=RD_DB, host=RD_HOST, port=RD_PORT, password=RD_PASS))
 else:
-    from aiogram.contrib.fsm_storage.memory import MemoryStorage
+    from aiogram.fsm.storage.memory import MemoryStorage
     storage = MemoryStorage()
-dp = Dispatcher(bot, storage=storage)
+dp = Dispatcher(storage=storage)
 
-if DB_PORT and DB_HOST and DB_PASS and DB_USER and DB_NAME:
-    database = PostgresqlDatabase(DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST, port=DB_PORT)
-else:
-    database = SqliteDatabase('./data/database.sqlite')
+client = MotorClient(MONGO_URL)
+db = client['music_search']
 
-
+from app.middlewares.inter import i18n
 _ = i18n.gettext

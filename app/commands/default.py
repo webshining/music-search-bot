@@ -1,14 +1,14 @@
-from aiogram.types import BotCommandScopeDefault, BotCommand
+from aiogram.types import BotCommand, BotCommandScopeDefault
+
 from loader import bot, i18n, _
 
 
 def get_default_commands(lang: str = 'en'):
     commands = [
-        BotCommand('/start', _('start bot', locale=lang)),
-        BotCommand('/search', _('search song', locale=lang)),
-        BotCommand('/library', _('library', locale=lang)),
-        BotCommand('/cancel', _('cancel', locale=lang))
+        BotCommand(command='/start', description=_('start chat', locale=lang)),
+        BotCommand(command='/search', description=_('search song', locale=lang)),
     ]
+
     return commands
 
 

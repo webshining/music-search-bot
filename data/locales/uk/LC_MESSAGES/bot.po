@@ -1,83 +1,79 @@
-# Ukrainian translations for bot.
+# Ukrainian translations for PROJECT.
 # Copyright (C) 2022 ORGANIZATION
-# This file is distributed under the same license as the bot project.
+# This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: bot VERSION\n"
+"Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-09-07 18:25+0300\n"
-"PO-Revision-Date: 2022-09-07 18:15+0300\n"
+"POT-Creation-Date: 2022-10-31 23:38+0200\n"
+"PO-Revision-Date: 2022-10-26 18:57+0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uk\n"
 "Language-Team: uk <LL@li.org>\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.9.1\n"
-
-#: app/commands/default.py:7
-msgid "start bot"
-msgstr "розпочати"
+"Generated-By: Babel 2.10.3\n"
 
 #: app/commands/default.py:8
+msgid "start chat"
+msgstr "почати пошук"
+
+#: app/commands/default.py:9
 msgid "search song"
 msgstr "шукати пісню"
 
-#: app/commands/default.py:9
-msgid "library"
-msgstr "бібліотека"
-
-#: app/commands/default.py:10
-msgid "cancel"
-msgstr "звершити дії"
-
 #: app/handlers/cancel.py:10
-#, fuzzy
-msgid "All state reset!"
-msgstr "Ваш стан скинуто"
+msgid "State reset!"
+msgstr "Дії завершені"
 
-#: app/handlers/user/library.py:13 app/handlers/user/library.py:22
-msgid "Library is empty"
-msgstr "Бібліотека порожня"
+#: app/handlers/users/inline.py:18 app/handlers/users/search.py:41
+#: app/handlers/users/search.py:43
+msgid "Song not found"
+msgstr "Пісню не було знайдено"
 
-#: app/handlers/user/library.py:14 app/handlers/user/library.py:22
-#: app/handlers/user/search.py:27 app/handlers/user/search.py:40
+#: app/handlers/users/search.py:13
+msgid "Enter song name:"
+msgstr "Введіть назву пісні:"
+
+#: app/handlers/users/search.py:22 app/handlers/users/search.py:36
+#: app/handlers/users/search.py:38
 msgid "Select song:"
 msgstr "Оберіть пісню:"
 
-#: app/handlers/user/search.py:17
-msgid "Enter song title:"
-msgstr "Введіть назву пісні:"
-
-#: app/handlers/user/search.py:25
-msgid "Song not found, please enter another title:"
+#: app/handlers/users/search.py:25
+msgid "Song not found, enter correct name:"
 msgstr "Пісню не було знайдено, введіть іншу назву:"
 
-#: app/handlers/user/search.py:39
-msgid "Looks like the last search has been deleted"
-msgstr "Схоже останній пошук було видалено"
+#: app/handlers/users/start.py:11
+msgid ""
+"👋 Hello <b>{}</b>\n"
+"🚫 The library is temporarily disabled"
+msgstr ""
+"👋 Привіт <b>{}</b>\n"
+"🚫 Бібліотеку тимчасово відключено"
 
-#: app/handlers/user/search.py:57
-msgid "This song has no text"
-msgstr "У цієї пісні немає тексту"
-
-#: app/keyboards/music.py:10
-msgid "Remove from library"
-msgstr "Видалити"
-
-#: app/keyboards/music.py:10
-msgid "Add to library"
-msgstr "Зберегти"
-
-#: app/keyboards/music.py:12
-msgid "Music"
-msgstr "Музика"
-
-#: app/keyboards/music.py:13
+#: app/keyboards/back.py:10
 msgid "Back"
 msgstr "Назад"
+
+#: app/keyboards/inline.py:10
+msgid "Search in another chat"
+msgstr "Шукати в іншому чаті"
+
+#~ msgid "change language"
+#~ msgstr "змінити мову"
+
+#~ msgid "Language changed!"
+#~ msgstr "Мову змінено"
+
+#~ msgid "You didn't enter anything"
+#~ msgstr "Ви нічого не ввели"
+
+#~ msgid "Hello <b>{}</b>"
+#~ msgstr "Привіт <b>{}</b>"
 

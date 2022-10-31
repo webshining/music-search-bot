@@ -1,6 +1,3 @@
-from .cancel import dp
-from .user import dp
-from .admin import dp
-
-
-__all__ = ['dp']
+from . import cancel
+from . import users
+from . import admins

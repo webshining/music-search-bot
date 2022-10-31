@@ -1,10 +1,10 @@
-from aiogram.dispatcher.filters import Command
-from aiogram.dispatcher import FSMContext
 from aiogram.types import Message
-from loader import _, dp
+from aiogram.filters import Command
+from aiogram.fsm.context import FSMContext
 
+from loader import dp, _
 
-@dp.message_handler(Command('cancel'), state='*')
-async def cancel_handler(message: Message, state: FSMContext):
-    await state.finish()
-    await message.answer(_('All state reset!'))
+@dp.message(Command('cancel'))
+async def _cancel(message: Message, state: FSMContext):
+    await state.clear()
+    await message.answer(_('State reset!'))

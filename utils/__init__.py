@@ -1,2 +1,1 @@
-from .logging import logger
-from .parse import *
+from .parse import get_names, get_text
