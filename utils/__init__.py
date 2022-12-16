@@ -1,1 +1,1 @@
-from .parse import get_names, get_text
+from .parse import get_names, get_song

@@ -1,27 +1,22 @@
-from ..models import Song, User, users_collection
+from ..models import User
 
 
-async def get_users():
-    users = await users_collection.find()
-    return [User(**u) for u in users]
+def get_user(id: int) -> User or None:
+    user = User.get_or_none(User.id == id)
+    return user
 
 
-async def get_user(id: int):
-    user = await users_collection.find_one({'id': id})
-    return User(**user) if user else None
+def create_user(id: int, name: str, username: str) -> User:
+    user = User.create(id=id, name=name, username=username)
+    return user
 
 
-async def create_user(id: int, name: str, username: str, lang: str):
-    user = await users_collection.insert_one({'id': id, 'name': name, 'username': username, 'lang': lang, 'songs': []})
-    return await get_user(user.inserted_id)
-
-
-async def update_user(id: int, **kwargs):
-    user = await users_collection.find_one_and_update({'id': id}, {'$set': {**kwargs}}, return_document=True)
-    return User(**user)
-
-
-async def get_or_create_user(id: int, name: str, username: str, lang: str):
-    user = await get_user(id)
-    user = await update_user(id, name=name, username=username) if user else await create_user(id, name, username, lang)
+async def get_or_create_user(id: int, name: str, username: str):
+    user = get_user(id)
+    if user:
+        user.name = name
+        user.username = username
+        user.save()
+    else:
+        user = create_user(id, name, username)
     return user

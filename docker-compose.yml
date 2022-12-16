@@ -6,21 +6,20 @@ services:
     restart: always
     depends_on:
       - redis
-      - mongo
+      - database
+    entrypoint:
+      - ./bin/entrypoint.sh
   redis:
-    image: redis
+    image: redis:alpine
     volumes: 
       - ./redis.conf:/usr/local/etc/redis/redis.conf
     ports:
       - "6379:6379"
-  mongo:
-    image: mongo
+  database:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_USER=sudar
+      - POSTGRES_DB=database
     ports:
-      - "27017:27017"
-    volumes:
-      - mongo_db:/data/db
-
-volumes:
-  logs:
-  mongo_db:
-    external: true
+      - "5432:5432"

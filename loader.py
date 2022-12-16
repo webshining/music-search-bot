@@ -1,7 +1,7 @@
 from aiogram import Bot, Dispatcher
-from motor.motor_tornado import MotorClient
+from peewee import SqliteDatabase, PostgresqlDatabase
 
-from data.config import TELEGRAM_BOT_TOKEN, RD_DB, RD_HOST, RD_PASS, RD_PORT, MONGO_URL
+from data.config import DIR, TELEGRAM_BOT_TOKEN, RD_DB, RD_HOST, RD_PASS, RD_PORT, DB_HOST, DB_NAME, DB_PASS, DB_PORT, DB_USER
 
 bot = Bot(TELEGRAM_BOT_TOKEN, parse_mode="HTML")
 if RD_DB and RD_HOST and RD_PORT:
@@ -13,8 +13,9 @@ else:
     storage = MemoryStorage()
 dp = Dispatcher(storage=storage)
 
-client = MotorClient(MONGO_URL)
-db = client['music_search']
+database = SqliteDatabase(f'{DIR}/data/database.sqlite3')
+if DB_HOST and DB_NAME and DB_PASS and DB_USER and DB_PORT:
+    database = PostgresqlDatabase(DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST, port=DB_PORT)
 
 from app.middlewares.inter import i18n
 _ = i18n.gettext

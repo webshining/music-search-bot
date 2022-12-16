@@ -1,5 +1,4 @@
-from aiogram.types import BotCommandScopeDefault
-from loader import dp, bot, i18n
+from loader import dp, bot
 
 
 async def on_startup():
@@ -9,9 +8,6 @@ async def on_startup():
 
 
 async def on_shutdown():
-    await bot.delete_my_commands(scope=BotCommandScopeDefault())
-    for lang in i18n.available_locales:
-        await bot.delete_my_commands(scope=BotCommandScopeDefault(), language_code=lang)
     print("Bot stoped!")
 
 
