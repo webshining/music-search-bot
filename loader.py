@@ -1,6 +1,6 @@
 from aiogram import Bot, Dispatcher
 
-from data.config import DIR, TELEGRAM_BOT_TOKEN, RD_DB, RD_HOST, RD_PASS, RD_PORT, DB_HOST, DB_NAME, DB_PASS, DB_PORT, DB_USER
+from data.config import DIR, TELEGRAM_BOT_TOKEN, RD_DB, RD_HOST, RD_PASS, RD_PORT
 
 bot = Bot(TELEGRAM_BOT_TOKEN, parse_mode="HTML")
 if RD_DB and RD_HOST and RD_PORT:
