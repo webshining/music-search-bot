@@ -3,11 +3,10 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardButton
 from loader import _
 
 
-def get_music_markup(data: str):
+def get_music_markup():
     markup = InlineKeyboardBuilder()
 
     buttons = [
-        InlineKeyboardButton(text=_("Music"), callback_data=f'music_{data}'),
         InlineKeyboardButton(text=_("Back"), callback_data=f'music_back'),
     ]
     markup.add(*buttons)

@@ -1,14 +1,14 @@
 # Translations template for PROJECT.
-# Copyright (C) 2022 ORGANIZATION
+# Copyright (C) 2023 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-31 23:38+0200\n"
+"POT-Creation-Date: 2023-01-19 19:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,21 +25,19 @@ msgstr ""
 msgid "search song"
 msgstr ""
 
-#: app/handlers/cancel.py:10
-msgid "State reset!"
+#: app/commands/default.py:10
+msgid "reset action"
 msgstr ""
 
-#: app/handlers/users/inline.py:18 app/handlers/users/search.py:41
-#: app/handlers/users/search.py:43
-msgid "Song not found"
+#: app/handlers/cancel.py:10
+msgid "State reset!"
 msgstr ""
 
 #: app/handlers/users/search.py:13
 msgid "Enter song name:"
 msgstr ""
 
-#: app/handlers/users/search.py:22 app/handlers/users/search.py:36
-#: app/handlers/users/search.py:38
+#: app/handlers/users/search.py:22 app/handlers/users/search.py:39
 msgid "Select song:"
 msgstr ""
 
@@ -50,14 +48,18 @@ msgstr ""
 #: app/handlers/users/start.py:11
 msgid ""
 "👋 Hello <b>{}</b>\n"
-"🚫 The library is temporarily disabled"
+"\n"
+"Commands:"
 msgstr ""
 
-#: app/keyboards/back.py:10
+#: app/handlers/users/start.py:15
+msgid ""
+"\n"
+"\n"
+"Author: <b>@webshining</b>"
+msgstr ""
+
+#: app/keyboards/music.py:10
 msgid "Back"
-msgstr ""
-
-#: app/keyboards/inline.py:10
-msgid "Search in another chat"
 msgstr ""
 

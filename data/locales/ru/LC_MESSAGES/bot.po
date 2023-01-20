@@ -1,14 +1,14 @@
 # Russian translations for PROJECT.
-# Copyright (C) 2022 ORGANIZATION
+# Copyright (C) 2023 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-10-31 23:38+0200\n"
-"PO-Revision-Date: 2022-10-26 18:57+0300\n"
+"POT-Creation-Date: 2023-01-19 19:13+0200\n"
+"PO-Revision-Date: 2023-01-19 19:14+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
 "Language-Team: ru <LL@li.org>\n"
@@ -21,29 +21,27 @@ msgstr ""
 
 #: app/commands/default.py:8
 msgid "start chat"
-msgstr "начать поиск"
+msgstr "начать"
 
 #: app/commands/default.py:9
 msgid "search song"
 msgstr "искать песню"
 
+#: app/commands/default.py:10
+msgid "reset action"
+msgstr "завершить действия"
+
 #: app/handlers/cancel.py:10
 msgid "State reset!"
-msgstr "Состояние сброшено!"
-
-#: app/handlers/users/inline.py:18 app/handlers/users/search.py:41
-#: app/handlers/users/search.py:43
-msgid "Song not found"
-msgstr "Песня не была найдена"
+msgstr "Действие завершено!"
 
 #: app/handlers/users/search.py:13
 msgid "Enter song name:"
 msgstr "Введите название песни:"
 
-#: app/handlers/users/search.py:22 app/handlers/users/search.py:36
-#: app/handlers/users/search.py:38
+#: app/handlers/users/search.py:22 app/handlers/users/search.py:39
 msgid "Select song:"
-msgstr "Выберете песню:"
+msgstr "Выберите песню:"
 
 #: app/handlers/users/search.py:25
 msgid "Song not found, enter correct name:"
@@ -52,28 +50,24 @@ msgstr "Песня не была найдена, введите правильн
 #: app/handlers/users/start.py:11
 msgid ""
 "👋 Hello <b>{}</b>\n"
-"🚫 The library is temporarily disabled"
+"\n"
+"Commands:"
 msgstr ""
 "👋 Привет <b>{}</b>\n"
-"🚫 Билиотека временно отключена"
+"\n"
+"Команды:"
 
-#: app/keyboards/back.py:10
+#: app/handlers/users/start.py:15
+msgid ""
+"\n"
+"\n"
+"Author: <b>@webshining</b>"
+msgstr ""
+"\n"
+"\n"
+"Автор: <b>@webshining</b>"
+
+#: app/keyboards/music.py:10
 msgid "Back"
 msgstr "Назад"
-
-#: app/keyboards/inline.py:10
-msgid "Search in another chat"
-msgstr "Искать в другом чате"
-
-#~ msgid "change language"
-#~ msgstr "изменить язык"
-
-#~ msgid "Language changed!"
-#~ msgstr "Язык изменён!"
-
-#~ msgid "You didn't enter anything"
-#~ msgstr "Вы не ввели ничего"
-
-#~ msgid "Hello <b>{}</b>"
-#~ msgstr "Привет <b>{}</b>"
 

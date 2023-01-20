@@ -1,3 +1,1 @@
-from . import start
-from . import search
-from . import inline
+from . import start, search

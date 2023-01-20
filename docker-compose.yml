@@ -6,7 +6,6 @@ services:
     restart: always
     depends_on:
       - redis
-      - database
     entrypoint:
       - ./bin/entrypoint.sh
   redis:
@@ -15,11 +14,3 @@ services:
       - ./redis.conf:/usr/local/etc/redis/redis.conf
     ports:
       - "6379:6379"
-  database:
-    image: postgres
-    environment:
-      - POSTGRES_PASSWORD=admin
-      - POSTGRES_USER=sudar
-      - POSTGRES_DB=database
-    ports:
-      - "5432:5432"
