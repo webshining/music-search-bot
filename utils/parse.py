@@ -1,38 +1,40 @@
 import re
-import aiohttp
+import requests
 from bs4 import BeautifulSoup
+from selenium import webdriver
 from fake_useragent import UserAgent
 
-ua = UserAgent()
+from data.config import SELENIUM_REMOTE
+
 URL = 'https://holychords.pro'
 HEADERS = {
-    'User-Agent': ua.chrome
+    'user-agent': UserAgent().random
 }
+options = webdriver.ChromeOptions()
+options.add_argument('--headless')
+options.add_argument('--no-sandbox')
+options.add_argument("--disable-dev-shm-usage")
 
 
-async def get_musics(search_name: str):
+def get_songs(search_name: str):
     search_name = '+'.join(search_name.split(' '))
-    musics = []
-    async with aiohttp.ClientSession() as session:
-        async with session.get(f'{URL}/search?name={search_name}', headers=HEADERS) as response:
-            soup = BeautifulSoup(await response.text(), "lxml")
-            results = soup.find_all('a', class_='mr-3 play')
-            for result in results:
-                href = result['data-audio-id']
-                name = result['data-audio-name']
-                artist =result['data-artist-name']
-                musics.append({'href': href, 'name': name, 'artist': artist})
-    return musics
+    response = requests.get(f'{URL}/search?name={search_name}', headers=HEADERS)
+    soup = BeautifulSoup(response.text, 'lxml')
+    results = [{'href': a['data-audio-id'], 'name': a['data-audio-name'], 'artist': a['data-artist-name']} for a in soup.find_all('a', class_='mr-3 play')]
+    return results
 
 
-async def get_text(href: str):
-    async with aiohttp.ClientSession() as session:
-        async with session.get(f'{URL}/{href}', headers=HEADERS) as response:
-            soup = BeautifulSoup(await response.text(), 'lxml')
-            result = soup.find('pre', id='music_text').get_text(separator='\n').split('\n')
-            return '\n'.join([
-                re.sub(
-                    r'(\d*\s*(Куплет|куплет|(Пред|пред)*Припев|(Пред|пред)*припев|Приспів|приспів|Брідж|брідж|Бридж|бридж)\d*\s*:*)',
-                    r'\n<b>\1</b>',
-                    i.strip()
-                ) for i in result if i.strip()])
+
+def get_text(href: str):
+    driver = webdriver.Remote(SELENIUM_REMOTE, options=options) if SELENIUM_REMOTE else webdriver.Chrome(options=options)
+    driver.get(f'{URL}/{href}')
+    soup = BeautifulSoup(driver.page_source, 'lxml')
+    text_chords = soup.find('pre', id='music_text').get_text()
+    for b in soup.find_all('div', class_='blocks'):
+        for row in b.find_all('span', class_='chopds'):
+            row.decompose()
+    text = '\n'.join(['\n'.join([re.sub(r'(\d*\s*(Куплет|куплет|(Пред|пред)*Припев|(Пред|пред)*припев|Приспів|приспів|Брідж|брідж|Бридж|бридж)\d*\s*:*)',
+                                        r'\n<b>\1</b>',
+                                        i.strip()) for i in b.get_text().split('\n') if i.strip()]) for b in soup.find_all('div', class_='blocks')])
+
+    return text_chords, text

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-19 19:13+0200\n"
-"PO-Revision-Date: 2023-01-19 19:14+0200\n"
+"POT-Creation-Date: 2023-02-04 00:16+0200\n"
+"PO-Revision-Date: 2023-02-04 00:16+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uk\n"
 "Language-Team: uk <LL@li.org>\n"
@@ -21,31 +21,31 @@ msgstr ""
 
 #: app/commands/default.py:8
 msgid "start chat"
-msgstr "почати"
+msgstr ""
 
 #: app/commands/default.py:9
 msgid "search song"
-msgstr "шукати пісню"
+msgstr ""
 
 #: app/commands/default.py:10
 msgid "reset action"
-msgstr "завершити дії"
+msgstr ""
 
 #: app/handlers/cancel.py:10
 msgid "State reset!"
-msgstr "Дію завершено!"
+msgstr ""
 
 #: app/handlers/users/search.py:13
 msgid "Enter song name:"
-msgstr "Введіть назву пісні:"
+msgstr ""
 
-#: app/handlers/users/search.py:22 app/handlers/users/search.py:39
-msgid "Select song:"
-msgstr "Оберіть пісню:"
+#: app/handlers/users/search.py:43
+msgid "It looks like there is no songs in memory or you wrote /cancel"
+msgstr ""
 
-#: app/handlers/users/search.py:25
-msgid "Song not found, enter correct name:"
-msgstr "Пісню не було знайдено, введіть правильну назву:"
+#: app/handlers/users/search.py:51
+msgid "It looks like there is no this text in memory or you wrote /cancel"
+msgstr ""
 
 #: app/handlers/users/start.py:11
 msgid ""
@@ -53,9 +53,6 @@ msgid ""
 "\n"
 "Commands:"
 msgstr ""
-"👋 Привіт <b>{}</b>\n"
-"\n"
-"Команди:"
 
 #: app/handlers/users/start.py:15
 msgid ""
@@ -63,11 +60,12 @@ msgid ""
 "\n"
 "Author: <b>@webshining</b>"
 msgstr ""
-"\n"
-"\n"
-"Автор: <b>@webshining</b>"
 
-#: app/keyboards/music.py:10
+#: app/keyboards/song.py:10
 msgid "Back"
-msgstr "Назад"
+msgstr ""
+
+#: app/keyboards/song.py:11
+msgid "Chords"
+msgstr ""
 

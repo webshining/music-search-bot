@@ -1,11 +1,11 @@
 from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardButton
 
 
-def get_names_markup(data: str, names: list):
+def get_songs_markup(data: str, songs: list):
     builder = InlineKeyboardBuilder()
 
     buttons = [
-        InlineKeyboardButton(text=f"{name['name']} - {name['artist']}", callback_data=f'{data}_{name["href"]}') for name in names
+        InlineKeyboardButton(text=f"{song['name']} - {song['artist']}", callback_data=f'{data}_{song["href"]}') for song in songs
     ]
     builder.add(*buttons)
     builder.adjust(2)

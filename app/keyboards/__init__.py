@@ -1,2 +1,2 @@
-from .names import get_names_markup
-from .music import get_music_markup
+from .names import get_songs_markup
+from .song import get_song_markup

@@ -16,6 +16,8 @@ RD_HOST = env.str('RD_HOST', None)
 RD_PORT = env.int('RD_PORT', None)
 RD_PASS = env.str('RD_PASS', None)
 
+SELENIUM_REMOTE = env.str('SELENIUM_REMOTE', None)
+
 
 I18N_PATH = f'{DIR}/data/locales'
 I18N_DOMAIN = 'bot'

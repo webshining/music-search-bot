@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-01-19 19:13+0200\n"
-"PO-Revision-Date: 2023-01-19 19:14+0200\n"
+"POT-Creation-Date: 2023-02-04 00:16+0200\n"
+"PO-Revision-Date: 2023-02-04 00:16+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
@@ -38,12 +38,12 @@ msgstr ""
 msgid "Enter song name:"
 msgstr ""
 
-#: app/handlers/users/search.py:22 app/handlers/users/search.py:39
-msgid "Select song:"
+#: app/handlers/users/search.py:43
+msgid "It looks like there is no songs in memory or you wrote /cancel"
 msgstr ""
 
-#: app/handlers/users/search.py:25
-msgid "Song not found, enter correct name:"
+#: app/handlers/users/search.py:51
+msgid "It looks like there is no this text in memory or you wrote /cancel"
 msgstr ""
 
 #: app/handlers/users/start.py:11
@@ -60,7 +60,11 @@ msgid ""
 "Author: <b>@webshining</b>"
 msgstr ""
 
-#: app/keyboards/music.py:10
+#: app/keyboards/song.py:10
 msgid "Back"
+msgstr ""
+
+#: app/keyboards/song.py:11
+msgid "Chords"
 msgstr ""
 

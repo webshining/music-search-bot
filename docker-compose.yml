@@ -6,6 +6,12 @@ services:
     restart: always
     depends_on:
       - redis
+      - chrome
+    environment:
+      - RD_DB=5
+      - RD_HOST=redis
+      - RD_PORT=6379
+      - SELENIUM_REMOTE=http://chrome:4444/wd/hub
     entrypoint:
       - ./bin/entrypoint.sh
   redis:
@@ -14,3 +20,7 @@ services:
       - ./redis.conf:/usr/local/etc/redis/redis.conf
     ports:
       - "6379:6379"
+  chrome:
+    image: selenium/standalone-chrome
+    ports:
+      - "4444:4444"
