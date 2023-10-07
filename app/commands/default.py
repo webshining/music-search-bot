@@ -1,6 +1,6 @@
 from aiogram.types import BotCommand, BotCommandScopeDefault
 
-from loader import bot, i18n, _
+from loader import _, bot, i18n
 
 
 def get_default_commands(lang: str = 'en'):

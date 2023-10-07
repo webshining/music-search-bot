@@ -1,3 +1,4 @@
-from . import cancel
-from . import users
-from . import admins
+from .cancel import dp
+from .users import dp
+
+__all__ = ['dp']

@@ -1,5 +1,6 @@
-from environs import Env
 from pathlib import Path
+
+from environs import Env
 
 env = Env()
 env.read_env()
@@ -17,7 +18,6 @@ RD_PORT = env.int('RD_PORT', None)
 RD_PASS = env.str('RD_PASS', None)
 
 SELENIUM_REMOTE = env.str('SELENIUM_REMOTE', None)
-
 
 I18N_PATH = f'{DIR}/data/locales'
 I18N_DOMAIN = 'bot'

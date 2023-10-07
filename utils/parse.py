@@ -1,19 +1,22 @@
+import os
 import re
+
 import requests
 from bs4 import BeautifulSoup
-from selenium import webdriver
 from fake_useragent import UserAgent
-
-from data.config import SELENIUM_REMOTE
+from selenium import webdriver
 
 URL = 'https://holychords.pro'
 HEADERS = {
     'user-agent': UserAgent().random
 }
+service = webdriver.ChromeService(executable_path=os.environ.get("CHROMEDRIVER_PATH"))
 options = webdriver.ChromeOptions()
+options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
 options.add_argument('--headless')
+options.add_argument('--disable-dev-shm-usage')   
 options.add_argument('--no-sandbox')
-options.add_argument("--disable-dev-shm-usage")
+driver = webdriver.Chrome(options=options)
 
 
 def get_songs(search_name: str):
@@ -26,7 +29,6 @@ def get_songs(search_name: str):
 
 
 def get_text(href: str):
-    driver = webdriver.Remote(SELENIUM_REMOTE, options=options) if SELENIUM_REMOTE else webdriver.Chrome(options=options)
     driver.get(f'{URL}/{href}')
     soup = BeautifulSoup(driver.page_source, 'lxml')
     text_chords = soup.find('pre', id='music_text').get_text()

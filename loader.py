@@ -1,6 +1,8 @@
 from aiogram import Bot, Dispatcher
+from aiogram.utils.i18n import I18n
 
-from data.config import DIR, TELEGRAM_BOT_TOKEN, RD_DB, RD_HOST, RD_PASS, RD_PORT
+from data.config import (I18N_DOMAIN, I18N_PATH, RD_DB, RD_HOST, RD_PASS,
+                         RD_PORT, TELEGRAM_BOT_TOKEN)
 
 bot = Bot(TELEGRAM_BOT_TOKEN, parse_mode="HTML")
 if RD_DB and RD_HOST and RD_PORT:
@@ -12,5 +14,7 @@ else:
     storage = MemoryStorage()
 dp = Dispatcher(storage=storage)
 
-from app.middlewares.inter import i18n
+
+
+i18n = I18n(path=I18N_PATH, domain=I18N_DOMAIN)
 _ = i18n.gettext

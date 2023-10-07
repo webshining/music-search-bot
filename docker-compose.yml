@@ -11,15 +11,13 @@ services:
       - RD_DB=5
       - RD_HOST=redis
       - RD_PORT=6379
-      - SELENIUM_REMOTE=http://chrome:4444/wd/hub
+      - SELENIUM_REMOTE=http://chrome:4444
     entrypoint:
       - ./bin/entrypoint.sh
   redis:
     image: redis:alpine
     volumes: 
       - ./redis.conf:/usr/local/etc/redis/redis.conf
-    ports:
-      - "6379:6379"
   chrome:
     image: selenium/standalone-chrome
     ports:

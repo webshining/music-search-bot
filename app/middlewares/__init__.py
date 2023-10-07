@@ -1,8 +1,10 @@
-from loader import dp
-from .user import UserMiddleware
-from .inter import i18n_middleware
+from aiogram import Dispatcher
 
-if __name__ == 'app.middlewares':
+from .inter import i18n_middleware
+from .user import UserMiddleware
+
+
+def setup_middlewares(dp: Dispatcher):
     dp.update.middleware(i18n_middleware)
     dp.update.middleware(UserMiddleware())
     
