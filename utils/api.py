@@ -4,11 +4,14 @@ from requests_html import AsyncHTMLSession
 
 URL = 'https://holychords.pro'
 
+
 async def get_songs(search_name: str):
     session = AsyncHTMLSession(loop=asyncio.get_event_loop())
     search_name = '+'.join(search_name.split(' '))
     r = await session.get(f'{URL}/search?name={search_name}')
-    results = [{'href': a.attrs['data-audio-id'], 'name': a.attrs['data-audio-name'], 'artist': a.attrs['data-artist-name']} for a in r.html.find('a.mr-3.play')]
+    results = [
+        {'href': a.attrs['data-audio-id'], 'name': a.attrs['data-audio-name'], 'artist': a.attrs['data-artist-name']}
+        for a in r.html.find('a.mr-3.play')]
     return results
 
 
