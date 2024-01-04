@@ -1,1 +1,1 @@
-from .api import get_songs, get_text
+from .api import get_songs
