@@ -1,4 +1,5 @@
 import asyncio
+import html
 import re
 
 from pydantic import BaseModel, model_validator
@@ -19,8 +20,10 @@ class Song(BaseModel):
         if not chords:
             remove_chords = re.compile(
                 r'([A-H][b\#/]?(2|5|6|7|9|11|13|\+|\+2|\+4|\+5|\+6|\+7|\+9|\+11|\+13|6\/9|7\-5|7\-9|7\#5|\#5|7\#9|\#9|7\+3|7\+5|7\+9|7b5|7b9|7sus2|7sus4|sus4|add2|add4|add6|add9|aug|dim|dim7|m\/maj7|m6|m7|m7b5|m9|m11|m13|maj|maj7|maj9|maj11|maj13|mb5|m|sus|sus2|sus4|m7add11|add11|b5|-5|4)*)')
-            return '\n'.join([i for i in remove_chords.sub('', self.text).split('\n') if i.strip()])
-        return self.text
+            text = '\n'.join([i for i in remove_chords.sub('', self.text).split('\n') if i.strip()])
+        else:
+            text = self.text
+        return html.unescape(text)
 
     @model_validator(mode="before")
     @classmethod
