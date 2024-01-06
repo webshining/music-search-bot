@@ -14,6 +14,7 @@ async def search_(message: Message, state: FSMContext):
     await state.set_state(Search.name)
 
 
+@dp.message()
 @dp.message(Search.name)
 async def search_name_(message: Message, state: FSMContext):
     songs = await get_songs(message.text)
@@ -34,7 +35,7 @@ async def search_callback_(call: CallbackQuery, state: FSMContext):
     songs = data.get('songs') or []
     song = list(filter(lambda s: s.id == int(call.data[7:]), songs))
     if song:
-        await call.message.edit_text(song[0].get_text(chords=False), reply_markup=get_song_markup("song"))
+        await call.message.edit_text(song[0].get_text(chords=False), reply_markup=get_song_markup("song", song[0].id))
     else:
         await call.message.edit_text("It looks like there is no songs in memory")
 
@@ -43,6 +44,26 @@ async def search_callback_(call: CallbackQuery, state: FSMContext):
 async def song_callback_(call: CallbackQuery, state: FSMContext):
     data = await state.get_data()
     songs = data.get('songs') or []
+    if call.data[5:].startswith("chords"):
+        chords, id = call.data[12:].split("_")
+        song = list(filter(lambda s: s.id == int(id), songs))
+        if song:
+            await call.message.edit_text(song[0].get_text(eval(chords)),
+                                         reply_markup=get_song_markup("song", song[0].id, not eval(chords)))
+        else:
+            await call.message.edit_text("It looks like there is no songs in memory or you wrote /cancel",
+                                         reply_markup=None)
+    if call.data[5:].startswith("music"):
+        song = list(filter(lambda s: s.id == int(call.data[11:]), songs))
+        if song:
+            await call.answer()
+            if song[0].file:
+                await call.message.answer_audio(audio=song[0].file)
+            else:
+                await call.message.answer("")
+        else:
+            await call.message.edit_text("It looks like this work does not have an audio track on the resource",
+                                         reply_markup=None)
     if call.data[5:] == 'back':
         if songs:
             text = "Select song:\n"
