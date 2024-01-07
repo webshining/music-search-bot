@@ -17,5 +17,7 @@ RD_PORT = env.int('RD_PORT', None)
 RD_PASS = env.str('RD_PASS', None)
 RD_USER = env.str('RD_USER', None)
 
+RD_URL = env.str('RD_URL', None)
+
 I18N_PATH = f'{DIR}/data/locales'
 I18N_DOMAIN = 'bot'

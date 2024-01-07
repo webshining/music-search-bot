@@ -1,6 +1,7 @@
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
+import pickle
 
 from app.keyboards import get_songs_markup, get_song_markup
 from app.states import Search
@@ -24,7 +25,7 @@ async def search_name_(message: Message, state: FSMContext):
             text += f'\n<b>{i + 1}.</b> <u>{s.name}</u> - {s.artist}'
         await message.answer(text, reply_markup=get_songs_markup('search', songs))
         await state.clear()
-        await state.update_data(songs=songs)
+        await state.update_data(songs=pickle.dumps(songs).hex())
     else:
         await message.answer(_("A song with this name was not found, try another:"))
 
@@ -32,7 +33,8 @@ async def search_name_(message: Message, state: FSMContext):
 @dp.callback_query(lambda call: call.data.startswith('search'))
 async def search_callback_(call: CallbackQuery, state: FSMContext):
     data = await state.get_data()
-    songs = data.get('songs') or []
+    songs = data.get('songs')
+    songs = pickle.loads(bytes.fromhex(songs)) if songs else []
     song = list(filter(lambda s: s.id == int(call.data[7:]), songs))
     if song:
         await call.message.edit_text(song[0].get_text(chords=False), reply_markup=get_song_markup("song", song[0].id))
@@ -43,7 +45,8 @@ async def search_callback_(call: CallbackQuery, state: FSMContext):
 @dp.callback_query(lambda call: call.data.startswith('song'))
 async def song_callback_(call: CallbackQuery, state: FSMContext):
     data = await state.get_data()
-    songs = data.get('songs') or []
+    songs = data.get('songs')
+    songs = pickle.loads(bytes.fromhex(songs)) if songs else []
     if call.data[5:] == 'back':
         if songs:
             text = "Select song:\n"
