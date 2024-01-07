@@ -1,14 +1,14 @@
 # Russian translations for PROJECT.
-# Copyright (C) 2023 ORGANIZATION
+# Copyright (C) 2024 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2023.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2023-02-04 00:16+0200\n"
-"PO-Revision-Date: 2023-02-04 00:16+0200\n"
+"POT-Creation-Date: 2024-01-07 02:05+0200\n"
+"PO-Revision-Date: 2024-01-07 01:33+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
 "Language-Team: ru <LL@li.org>\n"
@@ -17,55 +17,74 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.10.3\n"
+"Generated-By: Babel 2.14.0\n"
 
 #: app/commands/default.py:8
 msgid "start chat"
-msgstr ""
+msgstr "начать"
 
 #: app/commands/default.py:9
 msgid "search song"
-msgstr ""
+msgstr "найти песню"
 
 #: app/commands/default.py:10
 msgid "reset action"
-msgstr ""
+msgstr "завершить действие"
 
-#: app/handlers/cancel.py:10
+#: app/handlers/cancel.py:11
 msgid "State reset!"
-msgstr ""
+msgstr "Действие сброшено!"
 
 #: app/handlers/users/search.py:13
 msgid "Enter song name:"
-msgstr ""
+msgstr "Введите название песни:"
 
-#: app/handlers/users/search.py:43
-msgid "It looks like there is no songs in memory or you wrote /cancel"
-msgstr ""
+#: app/handlers/users/search.py:22
+msgid "Select song:"
+msgstr "Выберите песню:"
 
-#: app/handlers/users/search.py:51
-msgid "It looks like there is no this text in memory or you wrote /cancel"
-msgstr ""
+#: app/handlers/users/search.py:29
+msgid "A song with this name was not found, try another:"
+msgstr "Песня с таким названием не была найдена, попробуйте другое:"
 
-#: app/handlers/users/start.py:11
+#: app/handlers/users/search.py:40 app/handlers/users/search.py:54
+#: app/handlers/users/search.py:64 app/handlers/users/search.py:75
+msgid "Looks like the songs are out of memory or you used /cancel"
+msgstr "Похоже песен в памяти нет или вы использовали /cancel"
+
+#: app/handlers/users/search.py:73
+msgid "Looks like there’s no music on the resource for this song"
+msgstr "Похоже на ресурсе нету музыки для этой песни"
+
+#: app/handlers/users/start.py:10
+msgid "👋 Hello <b>{}</b>"
+msgstr "👋 Привет <b>{}</b>"
+
+#: app/handlers/users/start.py:10
+msgid "Commands:"
+msgstr "Команды:"
+
+#: app/handlers/users/start.py:14
 msgid ""
-"👋 Hello <b>{}</b>\n"
-"\n"
-"Commands:"
+"If you see an error in the text display or anything else, please let me "
+"know: <b>@webshining</b>"
 msgstr ""
-
-#: app/handlers/users/start.py:15
-msgid ""
-"\n"
-"\n"
-"Author: <b>@webshining</b>"
-msgstr ""
+"Если вы увидели ошибку в отображении текста или что-то еще, дайте мне "
+"знать: <b>@webshining</b>"
 
 #: app/keyboards/song.py:10
 msgid "Back"
-msgstr ""
+msgstr "Назад"
 
 #: app/keyboards/song.py:11
-msgid "Chords"
-msgstr ""
+msgid "Chords: On"
+msgstr "Аккорды: Вкл"
+
+#: app/keyboards/song.py:11
+msgid "Chords: Off"
+msgstr "Аккорды: Выкл"
+
+#: app/keyboards/song.py:13
+msgid "Music"
+msgstr "Музыка"
 
