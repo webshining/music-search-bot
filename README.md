@@ -6,9 +6,6 @@
 
 - Aiogram
 - Redis
-- Motor
-- MongoDB
-- Poetry
 - i18n
 - Docker and docker compose
 
@@ -29,15 +26,12 @@
 
 ## Getting started
 
----
-
 ### Init project
 
 ```bash
-$ git clone -b aiogram3 https://github.com/webshining/aiogram-mongo-template project_name
+$ git clone https://github.com/webshining/holychords-bot project_name
 $ cd project_name
 $ pip install -r requirements.txt
-$ poetry install # If you use poetry. Don't forget to select an interpreter
 ```
 
 ### Configure environment variables
@@ -62,25 +56,17 @@ $ cp .env.ren .env
 
 `RD_PORT` = redis port
 
-`RD_PASS` = redis password (not required)
-
-### Database config
-
-> MongoDB URL format<br> > `mongodb://[username:password@]host1[:port1][,...hostN[:portN]][/[defaultauthdb][?options]]`
-
-`MONGODB_URL` - connection url to your mongodb server
+`RD_URL` - connection url to your redis server
 
 ### Application start (local)
 
 ```bash
-$ python app.py
+$ python main.py
 # If you have make you can enter
 $ make run
 ```
 
 ## Docker
-
----
 
 ### Application start (docker)
 
@@ -89,7 +75,7 @@ $ make run
 ```bash
 $ docker-compose up -d
 # If you have make you can enter
-$ make docker_run
+$ make rebuild
 ```
 
 ### View app logs
@@ -97,7 +83,7 @@ $ make docker_run
 ```bash
 $ docker-compose logs -f app
 # If you have make you can enter
-$ make docker_logs
+$ make logs
 ```
 
 ### Rebuild app
@@ -105,13 +91,5 @@ $ make docker_logs
 ```bash
 $ docker-compose up -d --build --no-deps --force-recreate
 # If you have make you can enter
-$ make docker_rebuild
-```
-
-### Manage mongodb
-
-```bash
-$ docker-compose exec mongo mongosh
-# If you have make you can enter
-$ make mongosh
+$ make rebuild
 ```

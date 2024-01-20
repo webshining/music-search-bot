@@ -3,8 +3,10 @@ LOCALES_PATH := ./data/locales
 
 run:
 	python main.py
-compose:
-	docker-compose up -d $(service)
+rebuild:
+	docker-compose up -d --no-deps --force-recreate --build
+logs:
+	docker-compose logs -f app
 pybabel_extract: 
 	pybabel extract --input-dirs=. -o $(LOCALES_PATH)/bot.pot
 pybabel_init: 
@@ -15,5 +17,3 @@ pybabel_update:
 	pybabel update -i $(LOCALES_PATH)/bot.pot -d ./data/locales -D bot
 pybabel_compile: 
 	pybabel compile -d $(LOCALES_PATH) -D bot
-rebuild:
-	docker-compose up -d --no-deps --force-recreate --build
