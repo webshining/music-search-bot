@@ -11,13 +11,11 @@ TELEGRAM_BOT_TOKEN = env.str('TELEGRAM_BOT_TOKEN', None)
 
 ADMINS = env.list('ADMINS', subcast=int, default=[])
 
-RD_DB = env.int('RD_DB', None)
-RD_HOST = env.str('RD_HOST', None)
-RD_PORT = env.int('RD_PORT', None)
-RD_PASS = env.str('RD_PASS', None)
-RD_USER = env.str('RD_USER', None)
+RD_DB = env.int('RD_DB', 5)
+RD_HOST = env.str('RD_HOST', "localhost")
+RD_PORT = env.int('RD_PORT', 6379)
 
-RD_URL = env.str('RD_URL', None)
+RD_URI = env.str('RD_URI', default=f"redis://{RD_HOST}:{RD_PORT}/{RD_DB}")
 
 I18N_PATH = f'{DIR}/data/locales'
-I18N_DOMAIN = 'bot'
+I18N_DOMAIN = env.str('I18N_DOMAIN', 'bot')
