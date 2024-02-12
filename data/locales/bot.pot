@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-01-07 02:05+0200\n"
+"POT-Creation-Date: 2024-02-13 01:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,24 +33,28 @@ msgstr ""
 msgid "State reset!"
 msgstr ""
 
-#: app/handlers/users/search.py:13
+#: app/handlers/users/search.py:15
 msgid "Enter song name:"
 msgstr ""
 
-#: app/handlers/users/search.py:22
+#: app/handlers/users/search.py:23 app/handlers/users/search.py:56
 msgid "Select song:"
 msgstr ""
 
-#: app/handlers/users/search.py:29
+#: app/handlers/users/search.py:30
 msgid "A song with this name was not found, try another:"
 msgstr ""
 
-#: app/handlers/users/search.py:40 app/handlers/users/search.py:54
-#: app/handlers/users/search.py:64 app/handlers/users/search.py:75
+#: app/handlers/users/search.py:44
+msgid "Looks like the song has no lyrics"
+msgstr ""
+
+#: app/handlers/users/search.py:46 app/handlers/users/search.py:61
+#: app/handlers/users/search.py:71 app/handlers/users/search.py:81
 msgid "Looks like the songs are out of memory or you used /cancel"
 msgstr ""
 
-#: app/handlers/users/search.py:73
+#: app/handlers/users/search.py:79
 msgid "Looks like there’s no music on the resource for this song"
 msgstr ""
 
