@@ -1,6 +1,6 @@
 from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardButton
 
-from utils.api import Song
+from app.api import Song
 
 
 def get_songs_markup(data: str, songs: list[Song]):
