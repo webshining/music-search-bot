@@ -1,11 +1,12 @@
 import pickle
 
+from aiogram import F
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
 from aiogram.types import CallbackQuery, Message
 
 from app.api import get_songs
-from app.keyboards import get_songs_markup, get_song_markup
+from app.keyboards import get_song_markup, get_songs_markup
 from app.states import SearchState
 from loader import _, dp
 
@@ -17,6 +18,7 @@ async def search_(message: Message, state: FSMContext):
 
 
 @dp.message(SearchState.name)
+@dp.message(F.text)
 async def search_name_(message: Message, state: FSMContext):
     songs = await get_songs(message.text)
     if songs:
