@@ -1,42 +1,28 @@
 import asyncio
-import sys
 
+from loguru import logger
+
+from app.commands import set_default_commands
 from app.handlers import dp
+from app.middlewares import setup_middlewares
 from loader import bot
 
 
-async def on_startup():
-    from app.commands import set_default_commands
-    from app.middlewares import setup_middlewares
+async def on_startup() -> None:
     await set_default_commands()
+    logger.info("Bot started!")
+
+
+async def on_shutdown() -> None:
+    logger.info("Bot stopped!")
+
+
+async def main() -> None:
     setup_middlewares(dp)
-    print("Bot started!")
-
-
-async def on_shutdown():
-    print("Bot stoped!")
-
-
-def main() -> None:
     dp.startup.register(on_startup)
     dp.shutdown.register(on_shutdown)
-    dp.run_polling(bot)
+    await dp.start_polling(bot)
 
-
-if __name__ == "main":
-    async def on_startup():
-        from app.commands import set_default_commands
-        from app.middlewares import setup_middlewares
-        await set_default_commands()
-        setup_middlewares(dp)
-        print("Bot started!")
-        await bot.session.close()
-        sys.exit(0)
-
-
-    dp.startup.register(on_startup)
-    dp.shutdown.register(on_shutdown)
-    dp.run_polling(bot)
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

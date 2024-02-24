@@ -12,17 +12,16 @@
 ## Navigate
 
 - [Getting started](#getting-started)
-  - [Init project](#init-project)
-  - [Configure environment variables](#configure-environment-variables)
-    - [Bot config](#bot-config)
-    - [Redis config](#redis-config)
-    - [Database config](#database-config)
-  - [Application start (local)](#application-start-local)
+    - [Init project](#init-project)
+    - [Configure environment variables](#configure-environment-variables)
+        - [Bot config](#bot-config)
+        - [Redis config](#redis-config)
+        - [Database config](#database-config)
+    - [Application start (local)](#application-start-local)
 - [Docker](#docker)
-  - [Application start (docker)](#application-start-docker)
-  - [View app logs](#view-app-logs)
-  - [Rebuild app](#rebuild-app)
-  - [Manage mongodb](#manage-mongodb)
+    - [Application start (docker)](#application-start-docker)
+    - [View app logs](#view-app-logs)
+    - [Rebuild](#rebuild)
 
 ## Getting started
 
@@ -56,7 +55,7 @@ $ cp .env.ren .env
 
 `RD_PORT` = redis port
 
-`RD_URL` - connection url to your redis server
+`RD_URI` - connection url to your redis server
 
 ### Application start (local)
 
@@ -70,7 +69,12 @@ $ make run
 
 ### Application start (docker)
 
-> Run only one service:<br> > `$ docker-compose up -d service-name`
+> Run only one service:<br>
+> ```bash
+> $ docker-compose up -d service_name
+> # If you have make you can enter
+> $ make rebuild service_name
+> ```
 
 ```bash
 $ docker-compose up -d
@@ -86,7 +90,7 @@ $ docker-compose logs -f app
 $ make logs
 ```
 
-### Rebuild app
+### Rebuild
 
 ```bash
 $ docker-compose up -d --build --no-deps --force-recreate
