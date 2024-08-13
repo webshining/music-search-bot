@@ -7,6 +7,7 @@ def get_default_commands(lang: str = 'en'):
     commands = [
         BotCommand(command='/start', description=_('start chat', locale=lang)),
         BotCommand(command='/search', description=_('search song', locale=lang)),
+        BotCommand(command='/library', description=_('library', locale=lang)),
         BotCommand(command='/cancel', description=_('reset action', locale=lang)),
     ]
 

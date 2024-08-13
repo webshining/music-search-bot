@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-02-13 01:13+0200\n"
+"POT-Creation-Date: 2024-08-13 15:07+0300\n"
 "PO-Revision-Date: 2024-01-07 01:33+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ru\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #: app/commands/default.py:8
 msgid "start chat"
@@ -28,35 +28,39 @@ msgid "search song"
 msgstr "найти песню"
 
 #: app/commands/default.py:10
+msgid "library"
+msgstr "библиотека"
+
+#: app/commands/default.py:11
 msgid "reset action"
 msgstr "завершить действие"
 
 #: app/handlers/cancel.py:11
 msgid "State reset!"
-msgstr "Действие сброшено!"
+msgstr "Действие завершено!"
 
-#: app/handlers/users/search.py:15
-msgid "Enter song name:"
-msgstr "Введите название песни:"
-
-#: app/handlers/users/search.py:23 app/handlers/users/search.py:56
+#: app/handlers/users/library.py:12 app/handlers/users/library.py:21
+#: app/handlers/users/search.py:39 app/handlers/users/song.py:32
 msgid "Select song:"
 msgstr "Выберите песню:"
 
 #: app/handlers/users/search.py:30
+msgid "Enter song name:"
+msgstr "Введите название песни:"
+
+#: app/handlers/users/search.py:46
 msgid "A song with this name was not found, try another:"
 msgstr "Песня с таким названием не была найдена, попробуйте другое:"
 
-#: app/handlers/users/search.py:44
+#: app/handlers/users/song.py:22
 msgid "Looks like the song has no lyrics"
 msgstr "Похоже не ресурсе нету слов для песни"
 
-#: app/handlers/users/search.py:46 app/handlers/users/search.py:61
-#: app/handlers/users/search.py:71 app/handlers/users/search.py:81
+#: app/handlers/users/song.py:36
 msgid "Looks like the songs are out of memory or you used /cancel"
 msgstr "Похоже песен в памяти нет или вы использовали /cancel"
 
-#: app/handlers/users/search.py:79
+#: app/handlers/users/song.py:58
 msgid "Looks like there’s no music on the resource for this song"
 msgstr "Похоже на ресурсе нету музыки для этой песни"
 
@@ -76,19 +80,19 @@ msgstr ""
 "Если вы увидели ошибку в отображении текста или что-то еще, дайте мне "
 "знать: <b>@webshining</b>"
 
-#: app/keyboards/song.py:10
-msgid "Back"
-msgstr "Назад"
+#: app/keyboards/song.py:18
+msgid "Chords: {}"
+msgstr "Аккорды: {}"
 
-#: app/keyboards/song.py:11
-msgid "Chords: On"
-msgstr "Аккорды: Вкл"
-
-#: app/keyboards/song.py:11
-msgid "Chords: Off"
-msgstr "Аккорды: Выкл"
-
-#: app/keyboards/song.py:13
+#: app/keyboards/song.py:22
 msgid "Music"
 msgstr "Музыка"
+
+#: app/keyboards/song.py:27
+msgid "In library: {}"
+msgstr "В библиотеке: {}"
+
+#: app/keyboards/song.py:33
+msgid "Back"
+msgstr "Назад"
 

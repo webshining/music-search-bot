@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-02-13 01:13+0200\n"
+"POT-Creation-Date: 2024-08-13 15:07+0300\n"
 "PO-Revision-Date: 2024-01-07 01:33+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: uk\n"
@@ -17,7 +17,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.14.0\n"
+"Generated-By: Babel 2.16.0\n"
 
 #: app/commands/default.py:8
 msgid "start chat"
@@ -28,6 +28,10 @@ msgid "search song"
 msgstr "шукати пісню"
 
 #: app/commands/default.py:10
+msgid "library"
+msgstr "бібліотека"
+
+#: app/commands/default.py:11
 msgid "reset action"
 msgstr "завершити дію"
 
@@ -35,28 +39,28 @@ msgstr "завершити дію"
 msgid "State reset!"
 msgstr "Дію завершено!"
 
-#: app/handlers/users/search.py:15
-msgid "Enter song name:"
-msgstr "Введіть назву пісні:"
-
-#: app/handlers/users/search.py:23 app/handlers/users/search.py:56
+#: app/handlers/users/library.py:12 app/handlers/users/library.py:21
+#: app/handlers/users/search.py:39 app/handlers/users/song.py:32
 msgid "Select song:"
 msgstr "Оберіть пісню:"
 
 #: app/handlers/users/search.py:30
+msgid "Enter song name:"
+msgstr "Введіть назву пісні:"
+
+#: app/handlers/users/search.py:46
 msgid "A song with this name was not found, try another:"
 msgstr "Пісню з такою назвою не було знайдено, спробуйте іншу:"
 
-#: app/handlers/users/search.py:44
+#: app/handlers/users/song.py:22
 msgid "Looks like the song has no lyrics"
 msgstr "Схоже, що на ресурсі немає слів для цієї пісні"
 
-#: app/handlers/users/search.py:46 app/handlers/users/search.py:61
-#: app/handlers/users/search.py:71 app/handlers/users/search.py:81
+#: app/handlers/users/song.py:36
 msgid "Looks like the songs are out of memory or you used /cancel"
 msgstr "Схоже в пам'яті немає пісень або ви використали /cancel"
 
-#: app/handlers/users/search.py:79
+#: app/handlers/users/song.py:58
 msgid "Looks like there’s no music on the resource for this song"
 msgstr "Схоже, що на ресурсі немає музики для цієї пісні"
 
@@ -76,19 +80,26 @@ msgstr ""
 "Якщо ви побачили помилку у відображенні тексту або ще щось, дайте мені "
 "знати: <b>@webshining</b>"
 
-#: app/keyboards/song.py:10
+#: app/keyboards/song.py:18
+#, fuzzy
+msgid "Chords: {}"
+msgstr "Акорди: {}"
+
+#: app/keyboards/song.py:22
+msgid "Music"
+msgstr "Музика"
+
+#: app/keyboards/song.py:27
+msgid "In library: {}"
+msgstr "В бібліотеці: {}"
+
+#: app/keyboards/song.py:33
 msgid "Back"
 msgstr "Назад"
 
-#: app/keyboards/song.py:11
-msgid "Chords: On"
-msgstr "Акорди: Вім"
+#~ msgid "Chords: Off"
+#~ msgstr "Акорди: Вимк"
 
-#: app/keyboards/song.py:11
-msgid "Chords: Off"
-msgstr "Акорди: Вимк"
-
-#: app/keyboards/song.py:13
-msgid "Music"
-msgstr "Музика"
+#~ msgid "get library"
+#~ msgstr ""
 
