@@ -1,10 +1,9 @@
-# <p align="center">Aiogram Mongo Template</p>
-
-### <p align="center"><a href="https://core.telegram.org/bots/api">Telegram Bot</a> template with <a href="https://docs.aiogram.dev/en/dev-3.x/">aiogram</a>, <a href="https://www.mongodb.com/">mongodb</a> and <a href="https://www.docker.com/">docker</a></p>
+### <p align="center"><a href="https://core.telegram.org/bots/api">Telegram Bot</a> with <a href="https://docs.aiogram.dev/en/dev-3.x/">aiogram</a>, <a href="https://surrealdb.com/">SurrealDB</a> and <a href="https://www.docker.com/">docker</a></p>
 
 ## Technologies used:
 
 - Aiogram
+- SurrealDB
 - Redis
 - i18n
 - Docker and docker compose
@@ -44,6 +43,20 @@ $ cp .env.ren .env
 ### Bot config
 
 `TELEGRAM_BOT_TOKEN` - your bot token (required)
+
+### SurrealDB config
+
+> If you are not using redis, by default used MemoryStorage
+
+`SURREAL_NS` = surrealdb nameserver
+
+`SURREAL_DB` = surrealdb database name
+
+`SURREAL_USER` = surrealdb username
+
+`SURREAL_PASS` = surrealdb password
+
+`SURREAL_URL` = connection url to your surrealdb
 
 ### Redis config
 
