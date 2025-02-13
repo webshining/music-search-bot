@@ -19,3 +19,10 @@ pybabel_update:
 	pybabel update -i $(LOCALES_PATH)/$(I18N_DOMAIN).pot -d ./data/locales -D $(I18N_DOMAIN)
 pybabel_compile:
 	pybabel compile -d $(LOCALES_PATH) -D $(I18N_DOMAIN)
+
+db_export:
+	docker compose exec db //surreal export --conn http://localhost:8000 --user $(SURREAL_USER:-root) --pass $(SURREAL_PASS:-root) --ns $(SURREAL_NS:-bot) --db $(SURREAL_DB:-bot) export.surql && \
+	docker compose cp db:/export.surql ./
+db_import:
+	docker compose cp ./export.surql db:/export.surql && \
+	docker compose exec db /surreal import --conn http://localhost:8000 --user $(SURREAL_USER:-root) --pass $(SURREAL_PASS:-root) --ns $(SURREAL_NS:-bot) --db $(SURREAL_DB:-bot) export.surql

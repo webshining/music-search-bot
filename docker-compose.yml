@@ -13,9 +13,7 @@ x-redis-env: &redisenv
 x-env: &env
   TELEGRAM_BOT_TOKEN: ${TELEGRAM_BOT_TOKEN:?}
 
-  <<: [ *dbenv, *redisenv ]
-
-
+  <<: [*dbenv, *redisenv]
 
 services:
   app:
@@ -51,7 +49,7 @@ services:
       - ${SURREAL_PASS:-root}
       - file:/mydata/mydatabase.db
     ports:
-      - "8000:8000"
+      - "8001:8000"
     volumes:
       - surreal:/mydata
 
